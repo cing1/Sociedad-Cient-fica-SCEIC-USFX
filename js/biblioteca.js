@@ -285,10 +285,10 @@ function cardGrid(bk) {
         </div>
       </a>
       <div class="book-actions">
-        <a class="btn-view" href="${escapeHtml(bk.view)}" target="_blank" rel="noopener">
+        <a class="btn-view" href="${escapeHtml(bk.view)}" target="_blank" rel="noopener" title="Ver libro">
           <i class="bx bx-expand-alt"></i> Ver
         </a>
-        <a class="btn-download" href="${escapeHtml(bk.dl)}" download>
+        <a class="btn-download" href="${escapeHtml(bk.dl)}" download title="Descargar libro">
           <i class="bx bx-cloud-download"></i>
           ${bk.size ? `<span class="size">${escapeHtml(bk.size)} Mb</span>` : ''}
         </a>
@@ -303,7 +303,7 @@ function cardList(bk) {
       <i class="bx ${isPdf ? 'bxs-file-pdf' : 'bxs-file-archive'} list-icon ${bk.type}"></i>
       <a class="list-title" href="${escapeHtml(bk.view)}" target="_blank" rel="noopener">${escapeHtml(bk.title)}</a>
       <span class="list-size">${escapeHtml(bk.size)}${bk.size ? ' Mb' : ''}</span>
-      <a class="list-dl" href="${escapeHtml(bk.dl)}" download>
+      <a class="list-dl" href="${escapeHtml(bk.dl)}" download title="Descargar libro">
         <i class="bx bx-cloud-download"></i> Descargar
       </a>
     </div>`;
