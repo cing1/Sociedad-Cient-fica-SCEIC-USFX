@@ -1,6 +1,20 @@
 <!doctype html>
 <html lang="es">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-E21HWYDSMD"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-E21HWYDSMD");
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
@@ -595,14 +609,24 @@
           </p>
           <div class="rec-arrow">Acceder →</div>
         </div>
-        <div class="rec-card reveal" onclick="window.open('biblioteca.html','_blank')" style="cursor:pointer;">
+        <div
+          class="rec-card reveal"
+          onclick="window.open('biblioteca.html', '_blank')"
+          style="cursor: pointer"
+        >
           <div class="rec-icon">📖</div>
           <h4>Biblioteca de Textos</h4>
           <p>
             Libros técnicos digitales, artículos científicos y apuntes de las
             principales áreas de la carrera.
           </p>
-          <a href="biblioteca.html" target="_blank" rel="noopener" class="rec-arrow">Acceder →</a>
+          <a
+            href="biblioteca.html"
+            target="_blank"
+            rel="noopener"
+            class="rec-arrow"
+            >Acceder →</a
+          >
         </div>
         <div class="rec-card reveal">
           <div class="rec-icon">🎓</div>
@@ -684,23 +708,52 @@
             </div>
           </div>
         </div>
-        <div class="contact-form reveal-right">
+        <form
+          action="https://formsubmit.co/sceic@usfx.bo"
+          method="POST"
+          class="contact-form reveal-right"
+        >
+          <!-- Opcional de FormSubmit: quita reCAPTCHA para la primera prueba (eliminalo si recibes spam) -->
+          <input type="hidden" name="_captcha" value="false" />
+          <!-- Define un Asunto por defecto para los correos que te lleguen -->
+          <input
+            type="hidden"
+            name="_subject"
+            value="Nuevo mensaje desde Web SCEIC"
+          />
+
           <div class="form-row">
             <div class="form-group">
-              <label>Nombre</label><input type="text" placeholder="Tu nombre" />
+              <label>Nombre</label
+              ><input
+                type="text"
+                name="nombre"
+                placeholder="Tu nombre"
+                required
+              />
             </div>
             <div class="form-group">
               <label>Apellido</label
-              ><input type="text" placeholder="Tu apellido" />
+              ><input
+                type="text"
+                name="apellido"
+                placeholder="Tu apellido"
+                required
+              />
             </div>
           </div>
           <div class="form-group">
             <label>Correo electrónico</label
-            ><input type="email" placeholder="tu@correo.com" />
+            ><input
+              type="email"
+              name="email"
+              placeholder="tu@correo.com"
+              required
+            />
           </div>
           <div class="form-group">
             <label>Asunto</label>
-            <select>
+            <select name="asunto" required>
               <option value="" disabled selected>Selecciona un tema</option>
               <option>Quiero ser miembro</option>
               <option>Propuesta de colaboración</option>
@@ -712,16 +765,15 @@
           <div class="form-group">
             <label>Mensaje</label
             ><textarea
+              name="mensaje"
               placeholder="Cuéntanos en qué podemos ayudarte..."
+              required
             ></textarea>
           </div>
-          <button
-            class="btn-submit"
-            onclick="alert('¡Mensaje enviado! Te contactaremos pronto.')"
-          >
+          <button type="submit" class="btn-submit">
             <span>Enviar mensaje</span>
           </button>
-        </div>
+        </form>
       </div>
     </section>
 
