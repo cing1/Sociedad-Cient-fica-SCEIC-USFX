@@ -12,29 +12,35 @@
       href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="logo-sceic.png" />
-    <script src="script.js" defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" type="image/png" href="img/logo-sceic.png" />
+    <script src="./js/script.js" defer></script>
   </head>
   <body>
     <!-- LOADER -->
     <div id="loader">
       <img
-        src="logo-sceic.png"
+        src="img/logo-sceic.png"
         alt="SCIIC"
         class="loader-logo"
         onerror="this.style.display = 'none'"
       />
       <div class="loader-bar"><div class="loader-fill"></div></div>
-      <div class="loader-text">Cargando SCIIC · USFX</div>
+      <div class="loader-text">Cargando SCEIC · USFX</div>
     </div>
 
     <!-- NAV -->
     <nav id="navbar">
       <a href="#hero" class="nav-logo">
-        <img src="logo-sceic.png" alt="SCIIC Logo" id="navImg" />
+        <img src="img/logo-sceic.png" alt="SCIIC Logo" id="navImg" />
         <div class="logo-fallback" id="navFallback" style="display: none"></div>
         SCEIC · USFX
       </a>
@@ -55,6 +61,12 @@
 
     <!-- HERO -->
     <section id="hero">
+      <!-- HERO SLIDESHOW -->
+      <div class="hero-slideshow" aria-hidden="true">
+        <div class="hero-slide slide-1"></div>
+        <div class="hero-slide slide-2"></div>
+        <div class="hero-slide slide-3"></div>
+      </div>
       <canvas id="particles"></canvas>
       <div class="hero-grid"></div>
       <div class="orb orb-1"></div>
@@ -62,25 +74,27 @@
       <div class="orb orb-3"></div>
       <div class="hero-accent-line"></div>
 
-      <div class="hero-tag">
-        <span class="dot"></span>Universidad San Francisco Xavier · Sucre,
-        Bolivia
-      </div>
-      <h1 class="hero-title">
-        Sociedad Científica de<br />Estudiantes de<br /><span class="cobalt"
-          >Ingeniería</span
-        >
-        <span class="orange">Civil</span>
-      </h1>
-      <p class="hero-sub">
-        Impulsamos la investigación, el pensamiento crítico y el desarrollo
-        profesional de los futuros ingenieros civiles de Bolivia.
-      </p>
-      <div class="hero-cta">
-        <a href="#quienes-somos" class="btn-primary"
-          ><span>Conoce la SCEIC</span></a
-        >
-        <a href="#contacto" class="btn-outline">Únete a nosotros</a>
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="dot"></span>Universidad San Francisco Xavier · Sucre,
+          Bolivia
+        </div>
+        <h1 class="hero-title">
+          Sociedad Científica de<br />Estudiantes de<br /><span class="cobalt"
+            >Ingeniería</span
+          >
+          <span class="orange">Civil</span>
+        </h1>
+        <p class="hero-sub">
+          Impulsamos la investigación, el pensamiento crítico y el desarrollo
+          profesional de los futuros ingenieros civiles de Bolivia.
+        </p>
+        <div class="hero-cta">
+          <a href="#quienes-somos" class="btn-primary"
+            ><span>Conoce la SCEIC</span></a
+          >
+          <a href="#contacto" class="btn-outline">Únete a nosotros</a>
+        </div>
       </div>
       <div class="hero-stats">
         <div class="stat">
@@ -581,14 +595,14 @@
           </p>
           <div class="rec-arrow">Acceder →</div>
         </div>
-        <div class="rec-card reveal">
+        <div class="rec-card reveal" onclick="window.open('biblioteca.html','_blank')" style="cursor:pointer;">
           <div class="rec-icon">📖</div>
           <h4>Biblioteca de Textos</h4>
           <p>
             Libros técnicos digitales, artículos científicos y apuntes de las
             principales áreas de la carrera.
           </p>
-          <div class="rec-arrow">Acceder →</div>
+          <a href="biblioteca.html" target="_blank" rel="noopener" class="rec-arrow">Acceder →</a>
         </div>
         <div class="rec-card reveal">
           <div class="rec-icon">🎓</div>
@@ -643,7 +657,8 @@
             <div class="contact-detail-text">
               <h4>Ubicación</h4>
               <p>
-                Facultad de Ingeniería Civil - USFX<br />Sucre, Chuquisaca, Bolivia
+                Facultad de Ingeniería Civil - USFX<br />Sucre, Chuquisaca,
+                Bolivia
               </p>
             </div>
           </div>
@@ -714,7 +729,7 @@
     <footer>
       <a href="#hero" class="footer-logo">
         <img
-          src="logo-sceic.png"
+          src="img/logo-sceic.png"
           alt="SCIIC Logo"
           onerror="this.style.display = 'none'"
         />
@@ -728,9 +743,9 @@
         <a href="#contacto">Contacto</a>
       </div>
       <div class="footer-copy">
-        © 2026 SCEIC · USFX —  Sucre, Bolivia  -  Desarrollado por: Univ. Mario Cesgo Soliz
+        © 2026 SCEIC · USFX — Sucre, Bolivia - Desarrollado por: Univ. Mario
+        Cesgo Soliz
       </div>
     </footer>
-
   </body>
 </html>

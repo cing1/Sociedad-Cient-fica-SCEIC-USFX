@@ -240,16 +240,61 @@ nav.scrolled {
   padding: 8rem 4rem 5rem;
   position: relative;
   overflow: hidden;
-  background-image: url('faculta-ingcivil-usfx.png');
   text-shadow: 0px 0px 4px #000, -3px -3px 4px #000000;
+}
 
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
+/* HERO SLIDESHOW */
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
 
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: heroFade 21s ease-in-out infinite;
+}
+
+.slide-1 {
+  background-image: url('../img/faculta-ingcivil-usfx1.png');
+  animation-delay: 0s;
+}
+
+.slide-2 {
+  background-image: url('../img/faculta-ingcivil-usfx2.png');
+  animation-delay: 7s;
+}
+
+.slide-3 {
+  background-image: url('../img/faculta-ingcivil-usfx3.png');
+  animation-delay: 14s;
+}
+
+@keyframes heroFade {
+  0%   { opacity: 0; }
+  14%  { opacity: 1; }   /* fade in ~3s */
+  48%  { opacity: 1; }   /* imagen visible */
+  62%  { opacity: 0; }   /* fade out ~3s */
+  100% { opacity: 0; }
 }
 
 .hero-grid {
   position: absolute;
   inset: 0;
+  z-index: 1;
   opacity: 0.045;
   background-image:
     linear-gradient(rgba(26, 86, 219, 1) 1px, transparent 1px),
@@ -262,6 +307,7 @@ nav.scrolled {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
+  z-index: 1;
 }
 
 .orb-1 {
@@ -480,6 +526,7 @@ nav.scrolled {
   display: flex;
   gap: 3.5rem;
   animation: fadeIn 1s 0.9s ease both;
+  z-index: 2;
 }
 
 .stat {
@@ -530,6 +577,7 @@ nav.scrolled {
   align-items: center;
   gap: 0.4rem;
   animation: fadeIn 1s 1.3s ease both;
+  z-index: 2;
 }
 
 .scroll-hint span {
