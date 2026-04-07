@@ -13,3 +13,67 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Software card specific styles */
+.sw-usage {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+.sw-license {
+  margin: 6px 0;
+}
+.sw-license span {
+  font-size: 0.65rem;
+  font-family: var(--lib-mono);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--gray);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sw-desc {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+  margin-top: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.software-card .book-cover {
+  aspect-ratio: 16/9;
+  background: linear-gradient(45deg, #0f172a, #1eccde22);
+}
+
+.software-card .book-cover .no-cover {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+.list-usage {
+  font-size: 0.8rem;
+  color: var(--gray);
+  opacity: 0.7;
+}
+
+/* Specific license colors */
+.sw-license .sw-lic-open {
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.2);
+  background: rgba(74, 222, 128, 0.05);
+}
+
+.sw-license .sw-lic-free {
+  color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.2);
+  background: rgba(96, 165, 250, 0.05);
+}
