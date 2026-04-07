@@ -295,8 +295,8 @@
 /* ── Grid view ─────────────────────────────────────── */
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 22px;
 }
 
 .book-card {
@@ -319,7 +319,7 @@
 }
 
 .book-cover {
-  aspect-ratio: 3/4;
+  aspect-ratio: 2/3;
   overflow: hidden;
   background: rgba(11,11,36,.4);
   display: flex;
@@ -333,20 +333,20 @@
   display: block;
 }
 .book-cover .no-cover {
-  font-size: 2.5rem;
+  font-size: 4rem;
   color: rgba(10,188,233,.3);
 }
 
 .book-info {
-  padding: 10px 12px 6px;
+  padding: 14px 16px 8px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 .book-title {
-  font-size: .78rem;
+  font-size: .9rem;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.45;
   color: var(--white);
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -357,10 +357,10 @@
 
 .book-actions {
   display: flex;
-  gap: 6px;
-  padding: 8px 12px 10px;
+  gap: 8px;
+  padding: 10px 16px 14px;
   border-top: 1px solid var(--border);
-  margin-top: 8px;
+  margin-top: 10px;
 }
 .btn-view, .btn-download {
   display: flex;
@@ -392,7 +392,9 @@
   font-weight: 600;
 }
 .btn-download:hover { background: var(--orange); color: var(--white); }
-.btn-download .size {
+.btn-download .size,
+.btn-download .file-size,
+.list-dl .file-size {
   font-family: 'DM Mono', monospace;
   font-size: .68rem;
   opacity: .8;
@@ -565,7 +567,7 @@
   }
 }
 @media (max-width: 600px) {
-  .books-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .books-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 }
 
 /* ── Biblioteca page wrapper top-padding (accounts for fixed nav) ─── */

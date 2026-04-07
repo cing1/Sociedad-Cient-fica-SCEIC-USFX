@@ -1,8 +1,15 @@
-/* LOGO FALLBACK */
-document.getElementById("navImg").onerror = function () {
-  this.style.display = "none";
-  document.getElementById("navFallback").style.display = "flex";
-};
+/* LOGO FALLBACK — se ejecuta tras DOMContentLoaded para que
+   el nav ya esté inyectado por components.js */
+document.addEventListener("DOMContentLoaded", () => {
+  const navImg = document.getElementById("navImg");
+  if (navImg) {
+    navImg.onerror = function () {
+      this.style.display = "none";
+      const fb = document.getElementById("navFallback");
+      if (fb) fb.style.display = "flex";
+    };
+  }
+});
 
 /* LOADER */
 window.addEventListener("load", () => {
@@ -12,19 +19,8 @@ window.addEventListener("load", () => {
   );
 });
 
-/* HAMBURGER */
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
-  hamburger.classList.toggle("open");
-});
-navLinks.querySelectorAll("a").forEach((a) => {
-  a.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    hamburger.classList.remove("open");
-  });
-});
+/* HAMBURGER — gestionado por components.js para todas las páginas */
+/* script.js no duplica esta lógica */
 
 /* NAV SCROLL */
 window.addEventListener("scroll", () => {
@@ -71,7 +67,7 @@ const cntObs = new IntersectionObserver(
       counted = true;
       counter(document.getElementById("cnt1"), 40, "+");
       counter(document.getElementById("cnt2"), 12, "");
-      counter(document.getElementById("cnt3"), 5, "");
+      counter(document.getElementById("cnt3"), 11, "");
       cntObs.disconnect();
     }
   },

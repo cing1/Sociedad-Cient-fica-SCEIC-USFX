@@ -1,0 +1,18 @@
+/* ── Datos Geográficos – estilos específicos ───── */
+@import url('biblioteca.css');
+
+#normas-root {
+  min-height: 400px;
+}
+
+.lib-page-header h1 {
+  background: linear-gradient(90deg, #d97706, #b45309);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.data-card .book-cover {
+  height: 120px; /* Reducir altura del cover para iconos simples */
+  background-color: rgba(217, 119, 6, 0.05); /* fondo con tinte naranja */
+}

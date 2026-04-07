@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="icon" type="image/png" href="img/logo-sceic.png" />
     <script src="./js/script.js" defer></script>
+    <script src="./js/components.js" defer></script>
   </head>
   <body>
     <!-- LOADER -->
@@ -58,27 +59,7 @@
       <div class="loader-text">Cargando&hellip;</div>
     </div>
 
-    <!-- NAV -->
-    <nav id="navbar">
-      <a href="#hero" class="nav-logo">
-        <img src="img/logo-sceic.png" alt="SCIIC Logo" id="navImg" />
-        <div class="logo-fallback" id="navFallback" style="display: none"></div>
-        SCEIC · USFX
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#quienes-somos">Nosotros</a></li>
-        <li><a href="#mision-vision">Misión</a></li>
-        <li><a href="#objetivos">Objetivos</a></li>
-        <li><a href="#miembros">Miembros</a></li>
-        <li><a href="#actividades">Actividades</a></li>
-        <li><a href="#publicaciones">Publicaciones</a></li>
-        <li><a href="#recursos">Recursos</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
+    <!-- NAV inyectado por components.js -->
 
     <!-- HERO -->
     <section id="hero">
@@ -406,88 +387,93 @@
       <div class="section-label reveal">Lo que hacemos</div>
       <h2 class="section-title reveal">Actividades recientes y próximas</h2>
       <div class="act-grid">
-        <div class="act-card reveal">
-          <div class="act-header teal">
-            <div class="act-date">Próximamente · Abril 2025</div>
-            <span class="act-emoji">🏛️</span>
-            <h4>Congreso Estudiantil de Ingeniería Civil</h4>
-          </div>
-          <div class="act-body">
-            <p>
-              Espacio para la presentación de investigaciones y proyectos
-              estudiantiles con participación de universidades de todo Bolivia.
-            </p>
-            <span class="act-tag">Congreso</span>
-          </div>
-        </div>
-        <div class="act-card reveal">
-          <div class="act-header orange">
-            <div class="act-date">Realizado · Marzo 2025</div>
-            <span class="act-emoji">🔩</span>
-            <h4>Taller de Diseño Sísmico con ETABS</h4>
-          </div>
-          <div class="act-body">
-            <p>
-              Capacitación práctica en software de análisis estructural con
-              enfoque en la normativa boliviana y peruana.
-            </p>
-            <span class="act-tag">Taller</span>
+        <div class="act-card reveal iframe-card">
+          <div class="iframe-container">
+            <iframe
+              src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1970225517240895%2F&show_text=true&width=560&t=0"
+              width="560"
+              height="429"
+              style="border: none; overflow: hidden"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
           </div>
         </div>
-        <div class="act-card reveal">
-          <div class="act-header red">
-            <div class="act-date">Realizado · Febrero 2025</div>
-            <span class="act-emoji">🌊</span>
-            <h4>Visita Técnica: Presa Derivadora Ravelo</h4>
-          </div>
-          <div class="act-body">
-            <p>
-              Recorrido técnico a la infraestructura hidráulica del departamento
-              de Chuquisaca con guía de ingenieros profesionales.
-            </p>
-            <span class="act-tag">Visita técnica</span>
-          </div>
-        </div>
-        <div class="act-card reveal">
-          <div class="act-header blue">
-            <div class="act-date">Realizado · Enero 2025</div>
-            <span class="act-emoji">📐</span>
-            <h4>Seminario de Topografía con Drones</h4>
-          </div>
-          <div class="act-body">
-            <p>
-              Introducción al levantamiento topográfico con vehículos aéreos no
-              tripulados y procesamiento con Agisoft Metashape.
-            </p>
-            <span class="act-tag">Seminario</span>
+
+        <div class="act-card reveal iframe-card">
+          <div class="iframe-container">
+            <iframe
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fsceiccivilusfx%2Fposts%2Fpfbid02Wp72vQqPjA2sFu9oB5XnRX9tCCLArs8bF1hsJ5LqbTCQw4QUnpmrRQHgdnNytobPl&show_text=true&width=500"
+              width="500"
+              height="679"
+              style="border: none; overflow: hidden"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
           </div>
         </div>
-        <div class="act-card reveal">
-          <div class="act-header mixed">
-            <div class="act-date">Próximamente · Mayo 2025</div>
-            <span class="act-emoji">♻️</span>
-            <h4>Proyecto: Pavimentos con Material Reciclado</h4>
-          </div>
-          <div class="act-body">
-            <p>
-              Investigación aplicada sobre el uso de plástico reciclado como
-              aditivo en mezclas asfálticas para vías de bajo tráfico.
-            </p>
-            <span class="act-tag">Investigación</span>
+
+        <div class="act-card reveal iframe-card">
+          <div class="iframe-container">
+            <iframe
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fingenieria.civil.usfx%2Fposts%2Fpfbid02m26SkJfrSHGwvTRAQ53p6VpXngKwgYqFYrrjUxZsusiFLTyRZ5hJoGgYLQFKnfFFl&show_text=true&width=500"
+              width="500"
+              height="250"
+              style="border: none; overflow: hidden"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
           </div>
         </div>
-        <div class="act-card reveal">
-          <div class="act-header dark">
-            <div class="act-date">Anual · 2025</div>
-            <span class="act-emoji">🤝</span>
-            <h4>Programa de Mentoría Estudiantil</h4>
+
+        <div class="act-card reveal iframe-card">
+          <div class="iframe-container">
+            <iframe
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fsceiccivilusfx%2Fposts%2Fpfbid0PsfbKZtxGymm5LYUMRvQKYL6SjakoqJSnZAAReaLznWd3er6D1ycjKKCos1VHowgl&show_text=true&width=500"
+              width="500"
+              height="837"
+              style="border: none; overflow: hidden"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
           </div>
-          <div class="act-body">
-            <p>
-              Conexión entre estudiantes de primeros años y miembros avanzados
-              para orientación académica y desarrollo profesional continuo.
-            </p>
-            <span class="act-tag">Mentoría</span>
+        </div>
+
+        <div class="act-card reveal iframe-card">
+          <div class="iframe-container">
+            <iframe
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fsceiccivilusfx%2Fposts%2Fpfbid02t4Kf77WWX894nkP5uxNRH9rKNAmQQJHSAf992zAr1iwvpPvfwutFtyCGYDYogy2ol&show_text=true&width=500"
+              width="500"
+              height="837"
+              style="border: none; overflow: hidden"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
+          </div>
+        </div>
+
+        <div class="act-card reveal iframe-card">
+          <div class="iframe-container">
+            <iframe
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fsceiccivilusfx%2Fposts%2Fpfbid0PsfbKZtxGymm5LYUMRvQKYL6SjakoqJSnZAAReaLznWd3er6D1ycjKKCos1VHowgl&show_text=true&width=500"
+              width="500"
+              height="837"
+              style="border: none; overflow: hidden"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
           </div>
         </div>
       </div>
@@ -583,23 +569,43 @@
       <div class="section-label reveal">Biblioteca digital</div>
       <h2 class="section-title reveal">Recursos académicos</h2>
       <div class="rec-grid">
-        <div class="rec-card reveal">
+        <div
+          class="rec-card reveal"
+          onclick="window.open('normas.html', '_blank')"
+          style="cursor: pointer"
+        >
           <div class="rec-icon">📐</div>
           <h4>Normas y Reglamentos</h4>
           <p>
             Normativa boliviana de construcción, reglamentos sísmicos y
             estándares técnicos actualizados.
           </p>
-          <div class="rec-arrow">Acceder →</div>
+          <a
+            href="normas.html"
+            target="_blank"
+            rel="noopener"
+            class="rec-arrow"
+            >Acceder →</a
+          >
         </div>
-        <div class="rec-card reveal">
+        <div
+          class="rec-card reveal"
+          onclick="window.open('software.html', '_blank')"
+          style="cursor: pointer"
+        >
           <div class="rec-icon">💻</div>
           <h4>Software de Ingeniería</h4>
           <p>
             Guías y tutoriales de ETABS, SAP2000, AutoCAD Civil 3D, EPANET y
             otras herramientas clave.
           </p>
-          <div class="rec-arrow">Acceder →</div>
+          <a
+            href="software.html"
+            target="_blank"
+            rel="noopener"
+            class="rec-arrow"
+            >Acceder →</a
+          >
         </div>
         <div
           class="rec-card reveal"
@@ -620,32 +626,38 @@
             >Acceder →</a
           >
         </div>
-        <div class="rec-card reveal">
+        <div class="rec-card reveal" onclick="alert('Próximamente disponible')" style="cursor: pointer">
           <div class="rec-icon">🎓</div>
           <h4>Guías de Tesis</h4>
           <p>
             Plantillas, metodologías y ejemplos de trabajos de investigación y
             proyectos de grado.
           </p>
-          <div class="rec-arrow">Acceder →</div>
+          <div class="rec-arrow">Próximamente</div>
         </div>
-        <div class="rec-card reveal">
+        <div class="rec-card reveal" onclick="alert('Próximamente disponible')" style="cursor: pointer">
           <div class="rec-icon">📹</div>
           <h4>Videos y Seminarios</h4>
           <p>
             Grabaciones de talleres, conferencias y seminarios organizados por
             la SCEIC y socios académicos.
           </p>
-          <div class="rec-arrow">Acceder →</div>
+          <div class="rec-arrow">Próximamente</div>
         </div>
-        <div class="rec-card reveal">
+        <div class="rec-card reveal" onclick="window.open('datos-geograficos.html', '_blank')" style="cursor: pointer">
           <div class="rec-icon">🗺️</div>
           <h4>Datos Geográficos</h4>
           <p>
             Mapas geológicos, topográficos e hidrológicos de Chuquisaca y
             Bolivia para proyectos de investigación.
           </p>
-          <div class="rec-arrow">Acceder →</div>
+          <a
+            href="datos-geograficos.html"
+            target="_blank"
+            rel="noopener"
+            class="rec-arrow"
+            >Acceder →</a
+          >
         </div>
       </div>
     </section>
@@ -769,27 +781,6 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <a href="#hero" class="footer-logo">
-        <img
-          src="img/logo-sceic.png"
-          alt="SCIIC Logo"
-          onerror="this.style.display = 'none'"
-        />
-        SCEIC · USFX
-      </a>
-      <div class="footer-links">
-        <a href="#quienes-somos">Nosotros</a>
-        <a href="#mision-vision">Misión & Visión</a>
-        <a href="#actividades">Actividades</a>
-        <a href="#publicaciones">Publicaciones</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-      <div class="footer-copy">
-        © 2026 SCEIC · USFX — Sucre, Bolivia - Desarrollado por: Univ. Mario
-        Cesgo Soliz
-      </div>
-    </footer>
+    <!-- FOOTER inyectado por components.js -->
   </body>
 </html>

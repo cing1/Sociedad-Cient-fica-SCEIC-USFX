@@ -1,0 +1,15 @@
+/* ── Software de Ingeniería – estilos específicos ───── */
+@import url('biblioteca.css');
+
+/* Contenedor principal */
+#normas-root {
+  min-height: 400px;
+}
+
+/* Acento de color: verde-teal que evoca tecnología */
+.lib-page-header h1 {
+  background: linear-gradient(90deg, #059669, #0891b2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

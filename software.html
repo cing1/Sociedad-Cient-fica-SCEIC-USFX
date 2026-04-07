@@ -20,9 +20,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Biblioteca digital de libros de Ingeniería Civil – SCEIC USFX"
+      content="Software de Ingeniería – Herramientas y programas técnicos – SCEIC USFX"
     />
-    <title>SCEIC-USFX – Biblioteca de Textos</title>
+    <title>SCEIC-USFX – Software de Ingeniería</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -47,18 +47,19 @@
     <script src="./js/components.js" defer></script>
 
     <link rel="stylesheet" href="./css/biblioteca.css" />
+    <link rel="stylesheet" href="./css/software.css" />
   </head>
 
   <body>
 
     <div class="page-wrap">
-      <!-- Biblioteca Page Header -->
+      <!-- Software Page Header -->
       <header class="lib-page-header">
         <a href="index.html#recursos" class="back-link">← Volver a Recursos</a>
-        <h1>Biblioteca de Textos</h1>
+        <h1>Software de Ingeniería</h1>
         <p>
-          Libros técnicos, solucionarios y apuntes de libre acceso para
-          estudiantes de Ingeniería Civil · USFX
+          Manuales, programas y utilidades técnicas de apoyo a la ingeniería
+          civil de libre acceso.
         </p>
       </header>
 
@@ -69,7 +70,7 @@
           <input
             type="text"
             id="search"
-            placeholder="Buscar por título o autor…"
+            placeholder="Buscar software o herramienta…"
             autocomplete="off"
           />
         </div>
@@ -104,7 +105,7 @@
             <input
               id="cat-search"
               type="text"
-              placeholder="Buscar categoría..."
+              placeholder="Buscar..."
               autocomplete="off"
             />
           </div>
@@ -119,11 +120,10 @@
         <!-- Main content -->
         <main>
           <div class="results-meta" id="results-meta"></div>
-          <div id="library-root">
-            <!-- Loading state inicial -->
+          <div id="normas-root">
             <div class="loading-state">
               <i class="bx bx-loader-alt"></i>
-              Cargando biblioteca desde Google Drive…
+              Cargando software desde Google Drive…
             </div>
           </div>
         </main>
@@ -131,7 +131,6 @@
       <!-- /body-layout -->
     </div>
     <!-- footer inyectado por components.js -->
-    <div id="footer-placeholder"></div>
-    <script src="./js/biblioteca.js" defer></script>
+    <script src="./js/software.js" defer></script>
   </body>
 </html>
