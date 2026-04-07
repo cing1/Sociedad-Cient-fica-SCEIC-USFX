@@ -12,12 +12,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* LOADER */
+const hideLoader = () => {
+  const loader = document.getElementById("loader");
+  if (loader && !loader.classList.contains("hidden")) {
+    loader.classList.add("hidden");
+  }
+};
+
 window.addEventListener("load", () => {
-  setTimeout(
-    () => document.getElementById("loader").classList.add("hidden"),
-    1700,
-  );
+  setTimeout(hideLoader, 500);
 });
+
+// Failsafe: hide loader after 3s anyway
+setTimeout(hideLoader, 3000);
 
 /* HAMBURGER — gestionado por components.js para todas las páginas */
 /* script.js no duplica esta lógica */
