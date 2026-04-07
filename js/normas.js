@@ -235,7 +235,7 @@ function buildSidebar() {
     const li    = document.createElement("li");
     li.className    = "sidebar-item";
     li.dataset.cat  = cat.id;
-    li.innerHTML    = `<span>${escapeHtml(cat.label)}</span><span class="cat-count">${count}</span>`;
+    li.innerHTML    = `<span>📂 ${escapeHtml(cat.label)}</span><span class="cat-count">${count}</span>`;
     sidebarList.appendChild(li);
   });
 
@@ -306,9 +306,26 @@ async function init() {
     render();
   });
 
-  /* ── Toggle sidebar ── */
-  document.getElementById("btn-sidebar").addEventListener("click", () => {
-    document.querySelector(".sidebar").classList.toggle("open");
+  // Toggle sidebar móvil y overlay
+  const sidebar = document.querySelector(".sidebar");
+  const overlay = document.getElementById("sidebar-overlay");
+  const closeBtn = document.getElementById("close-sidebar");
+
+  const toggleSidebar = () => {
+    sidebar.classList.toggle("open");
+    overlay?.classList.toggle("active");
+  };
+
+  document.getElementById("btn-sidebar").addEventListener("click", toggleSidebar);
+  overlay?.addEventListener("click", toggleSidebar);
+  closeBtn?.addEventListener("click", toggleSidebar);
+
+  // También cerrar al seleccionar categoría (en móvil)
+  sidebarList.addEventListener("click", (e) => {
+    if (window.innerWidth <= 992 && e.target.closest(".sidebar-item")) {
+      sidebar.classList.remove("open");
+      overlay?.classList.remove("active");
+    }
   });
 
   buildSidebar();

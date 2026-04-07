@@ -94,10 +94,12 @@
       <!-- Body: sidebar + content -->
       <div class="body-layout">
         <!-- Sidebar filter -->
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
         <aside class="sidebar">
           <div class="sidebar-header">
             <i class="bx bx-filter-alt"></i>
             <span>Categorías</span>
+            <button class="close-sidebar" id="close-sidebar"><i class="bx bx-x"></i></button>
           </div>
           <div class="cat-search-wrap">
             <i class="bx bx-search"></i>
@@ -110,7 +112,7 @@
           </div>
           <ul class="sidebar-list" id="sidebar-list">
             <li class="sidebar-item active" data-cat="all">
-              <span>Todo</span>
+              <span>📂 Todo</span>
               <span class="cat-count" id="count-all">…</span>
             </li>
           </ul>
