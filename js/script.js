@@ -155,7 +155,7 @@ document
 
 /* MAGNETIC BUTTONS */
 document
-  .querySelectorAll(".btn-primary, .btn-outline, .btn-submit")
+  .querySelectorAll(".btn-primary, .btn-outline, .btn-submit, .btn-more-act")
   .forEach((btn) => {
     btn.addEventListener("mousemove", (e) => {
       const r = btn.getBoundingClientRect();
@@ -167,3 +167,22 @@ document
       btn.style.transform = "";
     });
   });
+
+/* VER MÁS ACTIVIDADES */
+document.addEventListener("DOMContentLoaded", () => {
+  const btnVerMas = document.getElementById("btn-ver-mas");
+  if (btnVerMas) {
+    btnVerMas.addEventListener("click", () => {
+      const hiddenActs = document.querySelectorAll(".hidden-activity");
+      hiddenActs.forEach((act, i) => {
+        act.classList.remove("hidden-activity");
+        // Forzar recalcular reveal si es necesario
+        setTimeout(() => {
+          act.classList.add("visible");
+        }, i * 100);
+      });
+      // Ocultar el botón después de mostrar todo
+      btnVerMas.parentElement.style.display = "none";
+    });
+  }
+});

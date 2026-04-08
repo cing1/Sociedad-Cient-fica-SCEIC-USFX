@@ -660,7 +660,6 @@
   .controls {
     position: sticky;
     top: 60px;
-    z-index: 100;
     background: rgba(21, 31, 48, 0.9);
     backdrop-filter: blur(12px);
     margin: 0 -24px 24px;
@@ -670,6 +669,7 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 10px;
+    z-index: 10;
   }
 
   .refresh-badge,
