@@ -42,6 +42,7 @@
         <li><a href="${h("miembros")}">Miembros</a></li>
         <li><a href="${h("actividades")}">Actividades</a></li>
         <li><a href="${h("publicaciones")}">Publicaciones</a></li>
+        <li><a href="cursos.html">Videos</a></li>
         <li><a href="${h("recursos")}"${isIndex ? "" : ' class="nav-link-active"'}>Recursos</a></li>
         <li><a href="${h("contacto")}">Contacto</a></li>
       </ul>
@@ -65,6 +66,7 @@
         <a href="${h("mision-vision")}">Misión &amp; Visión</a>
         <a href="${h("actividades")}">Actividades</a>
         <a href="${h("publicaciones")}">Publicaciones</a>
+        <a href="cursos.html">Videos &amp; Seminarios</a>
         <a href="${h("recursos")}">Recursos</a>
         <a href="${h("contacto")}">Contacto</a>
       </div>

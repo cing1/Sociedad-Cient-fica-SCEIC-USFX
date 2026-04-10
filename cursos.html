@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-182NL3DZ5M"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-182NL3DZ5M");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Videos, cursos y seminarios de Ingeniería Civil – SCEIC USFX"
+    />
+    <title>SCEIC-USFX — Videos y Seminarios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" type="image/png" href="img/logo-sceic.png" />
+    <script src="./js/script.js" defer></script>
+    <script src="./js/components.js" defer></script>
+
+    <style>
+      .courses-page {
+        padding-top: 100px;
+        min-height: 100vh;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(26, 86, 219, 0.05),
+            transparent
+          ),
+          radial-gradient(
+            circle at bottom left,
+            rgba(5, 147, 162, 0.05),
+            transparent
+          );
+      }
+
+      .courses-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 4rem;
+        padding: 0 2rem;
+      }
+
+      .courses-header h1 {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--white) 30%, var(--gray));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .courses-header p {
+        color: var(--gray);
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem 6rem;
+      }
+
+      .course-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .course-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--accent, var(--cobalt));
+        opacity: 0.6;
+      }
+
+      .course-card:hover {
+        transform: translateY(-12px);
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--accent, var(--cobalt));
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .course-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        transition: transform 0.4s ease;
+      }
+
+      .course-card:hover .course-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .course-card h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        color: var(--white);
+      }
+
+      .course-card p {
+        color: var(--gray);
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+        flex-grow: 1;
+      }
+
+      .course-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: var(--accent, var(--cobalt));
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .course-link i {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .course-card:hover .course-link i {
+        transform: translateX(6px);
+      }
+
+      /* Category Colors */
+      .cat-estructuras {
+        --accent: #1a56db;
+      }
+      .cat-carreteras {
+        --accent: #ff7a48;
+      }
+      .cat-sanitaria {
+        --accent: #0593a2;
+      }
+      .cat-gestion {
+        --accent: #e3371e;
+      }
+      .cat-geotecnia {
+        --accent: #8a95a5;
+      }
+
+      @media (max-width: 768px) {
+        .courses-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- LOADER -->
+    <div id="loader">
+      <img
+        src="img/logo-sceic.png"
+        alt="SCEIC Logo"
+        class="loader-logo"
+        onerror="
+          this.style.display = 'none';
+          this.nextElementSibling.style.display = 'flex';
+        "
+      />
+      <div class="loader-logo-fallback" style="display: none">SCEIC</div>
+      <div class="loader-bar">
+        <div class="loader-fill"></div>
+      </div>
+      <div class="loader-text">Cargando&hellip;</div>
+    </div>
+
+    <div class="courses-page">
+      <header class="courses-header">
+        <a
+          href="index.html#recursos"
+          class="btn-outline"
+          style="
+            padding: 0.5rem 1.2rem;
+            margin-bottom: 2rem;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+          "
+        >
+          <i class="bx bx-left-arrow-alt"></i> Volver a Recursos
+        </a>
+        <h1>Videos y Seminarios</h1>
+        <p>
+          Accede a nuestra recopilación de cursos especializados en las diversas
+          áreas de la Ingeniería Civil.
+        </p>
+      </header>
+
+      <main class="courses-grid">
+        <!-- Estructuras -->
+        <a
+          href="https://sceic01.notion.site/840ec82ff672457094a6f1f4c3fd9741?v=b2ec7dd088e6416aa2d80ec69ad07ce8"
+          target="_blank"
+          class="course-card cat-estructuras"
+        >
+          <span class="course-icon">🏗️</span>
+          <h3>Cursos de Estructuras</h3>
+          <p>
+            Diseño sismo-resistente, concreto armado, análisis estructural
+            avanzado y modelado en software especializado.
+          </p>
+          <span class="course-link"
+            >Ver catálogo <i class="bx bx-right-arrow-alt"></i
+          ></span>
+        </a>
+
+        <!-- Carreteras -->
+        <a
+          href="https://sceic01.notion.site/f005941f227743429b97e462c4321026?v=eb806963493646ec8ddcfb2c61a63151"
+          target="_blank"
+          class="course-card cat-carreteras"
+        >
+          <span class="course-icon">🛣️</span>
+          <h3>Cursos de Carreteras</h3>
+          <p>
+            Diseño geométrico de vías, pavimentos, infraestructura del
+            transporte y mantenimiento vial.
+          </p>
+          <span class="course-link"
+            >Ver catálogo <i class="bx bx-right-arrow-alt"></i
+          ></span>
+        </a>
+
+        <!-- Sanitaria/Hidraúlica -->
+        <a
+          href="https://sceic01.notion.site/6a04f471cabf4cd4b3ab004f7e413d97?v=6b45ab585be34cb381ee066c5ad08439"
+          target="_blank"
+          class="course-card cat-sanitaria"
+        >
+          <span class="course-icon">💧</span>
+          <h3>Sanitaria e Hidráulica</h3>
+          <p>
+            Sistemas de agua potable, alcantarillado, hidrología aplicada y
+            gestión de recursos hídricos.
+          </p>
+          <span class="course-link"
+            >Ver catálogo <i class="bx bx-right-arrow-alt"></i
+          ></span>
+        </a>
+
+        <!-- Gerencia -->
+        <a
+          href="https://sceic01.notion.site/sceic01/2a3e47ee21224105aa56ae529ab74912?v=e089cf7073aa43ccad285024596238b0"
+          target="_blank"
+          class="course-card cat-gestion"
+        >
+          <span class="course-icon">📊</span>
+          <h3>Gerencia y Gestión</h3>
+          <p>
+            Administración de proyectos de construcción, presupuestos,
+            planificación y gestión de obras públicas.
+          </p>
+          <span class="course-link"
+            >Ver catálogo <i class="bx bx-right-arrow-alt"></i
+          ></span>
+        </a>
+
+        <!-- Geotecnia -->
+        <a
+          href="https://sceic01.notion.site/sceic01/083ad1abfab54e0da6c4182e451a9b83?v=1a3b44a31bb844e499b4112337242a72"
+          target="_blank"
+          class="course-card cat-geotecnia"
+        >
+          <span class="course-icon">🧱</span>
+          <h3>Geotecnia y Geodesia</h3>
+          <p>
+            Mecánica de suelos, fundaciones, topografía avanzada y sistemas de
+            información geográfica.
+          </p>
+          <span class="course-link"
+            >Ver catálogo <i class="bx bx-right-arrow-alt"></i
+          ></span>
+        </a>
+      </main>
+    </div>
+
+    <!-- footer inyectado por components.js -->
+    <div id="footer-placeholder"></div>
+  </body>
+</html>
