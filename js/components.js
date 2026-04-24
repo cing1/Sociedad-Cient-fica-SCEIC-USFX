@@ -42,7 +42,6 @@
         <li><a href="${h("miembros")}">Miembros</a></li>
         <li><a href="${h("actividades")}">Actividades</a></li>
         <li><a href="${h("publicaciones")}">Publicaciones</a></li>
-        <li><a href="cursos.html">Videos</a></li>
         <li><a href="${h("recursos")}"${isIndex ? "" : ' class="nav-link-active"'}>Recursos</a></li>
         <li><a href="${h("contacto")}">Contacto</a></li>
       </ul>

@@ -69,7 +69,8 @@ const CATEGORIES = [
   { id: "algebra1", label: "Álgebra 1" },
   { id: "calculo1", label: "Cálculo 1" },
   { id: "fisca1", label: "Física 1" },
-  { id: "Dibujo-tecnico", label: "Dibujo Técnico" },
+  { id: "lab-fisica1", label: "Laboratorio de Física 1" },
+  { id: "dibujo-tecnico", label: "Dibujo Técnico" },
   { id: "quimica", label: "Química" },
   { id: "lab-quimica", label: "Laboratorio de Química Básica" },
   { id: "calculo2", label: "Cálculo 2" },
@@ -77,7 +78,7 @@ const CATEGORIES = [
   { id: "fisica2", label: "Física 2" },
   { id: "lab-fisica2", label: "Laboratorio de Física 2" },
   { id: "estructuras-isostaticas1", label: "Estructuras Isostáticas I" },
-  { id: "diseño-asistido", label: "Diseño Asistido por Computadora" },
+  { id: "diseno-asistido", label: "Diseño Asistido por Computadora" },
   { id: "ecuaciones-diferenciales", label: "Ecuaciones Diferenciales" },
   { id: "estructuras-isostaticas2", label: "Estructuras Isostáticas II" },
   { id: "analisis-vectorial", label: "Análisis Vectorial y Tensional" },
@@ -256,6 +257,11 @@ function render() {
   filtered.forEach((bk) => {
     if (!groups[bk.cat]) groups[bk.cat] = [];
     groups[bk.cat].push(bk);
+  });
+
+  // Ordenar libros dentro de cada categoría alfabéticamente
+  Object.keys(groups).forEach((cat) => {
+    groups[cat].sort((a, b) => a.title.localeCompare(b.title, "es"));
   });
 
   if (filtered.length === 0) {
