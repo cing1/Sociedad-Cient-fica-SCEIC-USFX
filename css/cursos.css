@@ -1,0 +1,540 @@
+/* ============================================================
+   cursos.css — Página de Cursos SCEIC-USFX
+   ============================================================ */
+section {
+  padding: 0rem;
+}
+
+/* ── Layout principal ─────────────────────────────────────── */
+.cursos-page {
+  padding-top: 88px;
+  min-height: 100vh;
+}
+
+/* ── Hero banner ──────────────────────────────────────────── */
+.cursos-hero {
+  background:
+    linear-gradient(135deg, rgba(16, 55, 120, 0.92) 0%, rgba(26, 86, 219, 0.75) 60%, rgba(5, 147, 162, 0.5) 100%),
+    url('../img/faculta-ingcivil-usfx1.jpg') center/cover no-repeat;
+  padding: 2rem 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(26, 86, 219, 0.2);
+}
+
+.cursos-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 50%, rgba(255, 122, 72, 0.1) 0%, transparent 55%),
+    radial-gradient(circle at 15% 80%, rgba(5, 147, 162, 0.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cursos-hero-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cursos-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.78rem;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+  transition: color 0.2s;
+}
+
+.cursos-back:hover {
+  color: var(--orange);
+}
+
+.cursos-hero h1 {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+}
+
+.cursos-hero h1 span {
+  color: var(--orange);
+}
+
+.cursos-hero p {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 1rem;
+  max-width: 560px;
+}
+
+/* ── Buscador ─────────────────────────────────────────────── */
+.cursos-search-wrap {
+  position: sticky;
+  top: 50px;
+  z-index: 10;
+  max-width: 100%;
+  margin-bottom: 1.2rem;
+  background: rgba(14, 22, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.cursos-search-wrap svg {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+#cursos-search {
+  width: 100%;
+  padding: 0.75rem 1.1rem 0.75rem 3rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+}
+
+#cursos-search::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+#cursos-search:focus {
+  border-color: rgba(26, 86, 219, 0.7);
+  background: rgba(255, 255, 255, 0.11);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.18);
+}
+
+/* ── Contenido principal (sidebar + grid) ─────────────────── */
+.cursos-body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2.4rem;
+  max-width: 1300px;
+  margin: 2.4rem auto 5rem;
+  padding: 0 2rem;
+  align-items: start;
+}
+
+/* ── Sidebar filtros ──────────────────────────────────────── */
+.cursos-sidebar {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 1.6rem 1.4rem;
+  position: sticky;
+  top: 100px;
+}
+
+.sidebar-title {
+  font-family: "Syne", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-title::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cobalt), var(--teal));
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+  user-select: none;
+}
+
+.filter-item:hover {
+  background: rgba(26, 86, 219, 0.1);
+}
+
+.filter-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  border: 1.8px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.filter-item input[type="checkbox"]:checked {
+  background: var(--accent-cat, var(--cobalt));
+  border-color: var(--accent-cat, var(--cobalt));
+}
+
+.filter-item input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1.5px;
+  width: 5px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.filter-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--white);
+  flex: 1;
+}
+
+.filter-count {
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--gray);
+  padding: 0.15rem 0.5rem;
+  border-radius: 100px;
+  font-weight: 600;
+}
+
+.filter-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Colores de categoría ─────────────────────────────────── */
+:root {
+  --cat-estructuras: #1a56db;
+  --cat-carreteras: #ff7a48;
+  --cat-hidrosanitaria: #0593a2;
+  --cat-gerencia: #e3371e;
+  --cat-geodesia: #8b5cf6;
+}
+
+/* ── Resultados info ──────────────────────────────────────── */
+.cursos-results-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.results-count {
+  font-size: 0.82rem;
+  color: var(--gray);
+}
+
+.results-count strong {
+  color: var(--white);
+  font-weight: 700;
+}
+
+.btn-clear-filters {
+  font-size: 0.75rem;
+  color: var(--orange);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  transition: opacity 0.2s;
+  display: none;
+}
+
+.btn-clear-filters.visible {
+  display: block;
+}
+
+.btn-clear-filters:hover {
+  opacity: 0.75;
+}
+
+/* ── Grid de tarjetas ─────────────────────────────────────── */
+.cursos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.6rem;
+}
+
+/* ── Tarjeta curso ────────────────────────────────────────── */
+.curso-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.35s,
+    border-color 0.35s;
+  position: relative;
+}
+
+.curso-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--card-accent, rgba(26, 86, 219, 0.4));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--card-accent, rgba(26, 86, 219, 0.15));
+}
+
+/* Franja de color por categoría en la parte inferior */
+.curso-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--cobalt));
+  z-index: 2;
+}
+
+/* ── Portada ──────────────────────────────────────────────── */
+.curso-portada {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  background: rgba(16, 55, 120, 0.35);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.curso-card:hover .curso-portada {
+  transform: scale(1.04);
+}
+
+.curso-portada-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Overlay al hover */
+.curso-portada-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(21, 31, 48, 0.55) 100%);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.curso-card:hover .curso-portada-wrap::after {
+  opacity: 1;
+}
+
+/* Portada fallback (cuando no hay imagen) */
+.curso-portada-fallback {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: linear-gradient(135deg, rgba(16, 55, 120, 0.5), rgba(26, 86, 219, 0.2));
+}
+
+/* ── Cuerpo de la tarjeta ─────────────────────────────────── */
+.curso-body {
+  padding: 1.3rem 1.3rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.45rem;
+}
+
+.curso-categoria {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--card-accent, var(--cobalt));
+  padding: 0.1rem 0.3rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: fit-content;
+}
+
+.curso-categoria-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--card-accent, var(--cobalt));
+  flex-shrink: 0;
+}
+
+.curso-nombre {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.8rem;
+  /* font-weight: 700; */
+  color: var(--white);
+  line-height: 1.35;
+  margin-top: 0.1rem;
+}
+
+.curso-organizador {
+  font-size: 0.78rem;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Empuja el link al fondo */
+.curso-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.curso-link {
+  color: #e3371e;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: gap 0.25s, opacity 0.2s;
+  text-shadow: 0 0 5px #e3371e;
+}
+
+.curso-link:hover {
+  color: aqua;
+  text-shadow: 0 0 5px #0593a2;
+  gap: 0.75rem;
+  opacity: 0.85;
+}
+
+.curso-link svg {
+  transition: transform 0.25s;
+}
+
+.curso-link:hover svg {
+  transform: translateX(3px);
+}
+
+/* ── Estado vacío ─────────────────────────────────────────── */
+.cursos-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--gray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cursos-empty-icon {
+  font-size: 3.5rem;
+  opacity: 0.4;
+}
+
+.cursos-empty h3 {
+  font-family: "Syne", sans-serif;
+  color: var(--white);
+  font-size: 1.1rem;
+}
+
+.cursos-empty p {
+  font-size: 0.9rem;
+  max-width: 360px;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .cursos-body {
+    grid-template-columns: 1fr;
+  }
+
+  .cursos-sidebar {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+    padding: 1rem 1.2rem;
+  }
+
+  .sidebar-title {
+    width: 100%;
+    margin-bottom: 0.3rem;
+  }
+
+  .filter-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .filter-item {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+  }
+
+  .filter-count {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .cursos-hero {
+    padding: 2rem 1.4rem 2rem;
+  }
+
+  .cursos-body {
+    padding: 0 1rem;
+  }
+
+  .cursos-grid {
+    grid-template-columns: 1fr;
+  }
+}

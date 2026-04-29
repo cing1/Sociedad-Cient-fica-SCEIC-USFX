@@ -186,3 +186,71 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+/* MODAL ACCESO CURSOS */
+function abrirModalCursos(e) {
+  if (e) e.stopPropagation();
+  const modal = document.getElementById("modal-cursos");
+  if (!modal) return;
+  // Limpiar estado previo
+  const input = document.getElementById("codigoUsuario");
+  const error = document.getElementById("mensajeError");
+  if (input) input.value = "";
+  if (error) error.style.display = "none";
+  // Mostrar modal
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden";
+  // Foco accesible
+  setTimeout(() => {
+    if (input) input.focus();
+  }, 120);
+}
+
+function cerrarModalCursos() {
+  const modal = document.getElementById("modal-cursos");
+  if (modal) modal.style.display = "none";
+  document.body.style.overflow = "";
+}
+
+// Cerrar modal al pulsar fuera del panel
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("modal-cursos");
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) cerrarModalCursos();
+    });
+  }
+  // Cerrar con Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") cerrarModalCursos();
+  });
+});
+
+/* VALIDAR ACCESO MEDIANTE CODIGO (CURSOS) */
+async function validarAcceso() {
+  const input = document.getElementById("codigoUsuario").value;
+  const mensajeError = document.getElementById("mensajeError");
+
+  // Limpiar error anterior
+  mensajeError.style.display = "none";
+
+  // Convertimos el texto a un formato que el navegador entienda
+  const msgUint8 = new TextEncoder().encode(input);
+  // Generamos el hash usando la capacidad nativa del navegador
+  const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
+  // Convertimos el resultado a texto hexadecimal
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashGenerado = hashArray
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+
+  const hashCorrecto =
+    "8133923ab9d1c930460860bb237ceb07998e03cee11601849169fe16bc0ef0d0";
+
+  if (hashGenerado === hashCorrecto) {
+    cerrarModalCursos();
+    window.location.href = "cursos.html";
+  } else {
+    mensajeError.style.display = "block";
+  }
+}
