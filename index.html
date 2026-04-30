@@ -283,7 +283,14 @@
     <section id="miembros">
       <div class="section-label reveal">Equipo humano</div>
       <h2 class="section-title reveal">Nuestros miembros</h2>
-      <p style=" color: #1a56db; text-align: center; font-style: italic; padding-bottom: 1rem;">
+      <p
+        style="
+          color: #1a56db;
+          text-align: center;
+          font-style: italic;
+          padding-bottom: 1rem;
+        "
+      >
         Directorio gestión 2026
       </p>
       <div class="members-grid">
@@ -791,6 +798,18 @@
             >Acceder →</a
           >
         </div>
+        <a
+          href="cursos.html"
+          class="rec-card reveal"
+          style="cursor: pointer; text-decoration: none; color: inherit; display: block;"
+        >
+          <div class="rec-icon">🎬</div>
+          <h4>Cursos</h4>
+          <p>
+            Cursos de especialización en diversas áreas de la ingeniería civil.
+          </p>
+          <span class="rec-arrow">Acceder →</span>
+        </a>
         <div
           class="rec-card reveal"
           onclick="alert('Próximamente disponible')"
@@ -803,18 +822,6 @@
             la SCEIC y socios académicos.
           </p>
           <div class="rec-arrow">Próximamente</div>
-        </div>
-        <div
-          class="rec-card reveal"
-          onclick="abrirModalCursos(event)"
-          style="cursor: pointer"
-        >
-          <div class="rec-icon">🎬</div>
-          <h4>Cursos</h4>
-          <p>
-            Cursos de especialización en diversas áreas de la ingeniería civil.
-          </p>
-          <span class="rec-arrow">Acceder →</span>
         </div>
         <div
           class="rec-card reveal"
@@ -971,153 +978,18 @@
       </div>
     </section>
 
-    <!-- MODAL ACCESO CURSOS -->
-    <div id="modal-cursos" role="dialog" aria-modal="true" aria-labelledby="modal-cursos-title" style="
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: rgba(10, 15, 40, 0.75);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      align-items: center;
-      justify-content: center;
-    ">
-      <div style="
-        background: linear-gradient(135deg, rgba(16,55,120,0.97) 0%, rgba(26,86,219,0.93) 100%);
-        border: 1px solid rgba(255,255,255,0.18);
-        border-radius: 20px;
-        box-shadow: 0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(26,86,219,0.3);
-        padding: 2.4rem 2.2rem 2rem;
-        max-width: 420px;
-        width: calc(100% - 2.4rem);
-        position: relative;
-        animation: modalIn .32s cubic-bezier(.4,0,.2,1);
-      ">
-        <!-- Botón cerrar -->
-        <button
-          id="modal-cursos-close"
-          onclick="cerrarModalCursos()"
-          aria-label="Cerrar"
-          style="
-            position: absolute;
-            top: 1rem; right: 1rem;
-            background: rgba(255,255,255,0.12);
-            border: none;
-            color: #fff;
-            font-size: 1.1rem;
-            width: 32px; height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: background .2s;
-          "
-          onmouseover="this.style.background='rgba(255,255,255,0.22)'"
-          onmouseout="this.style.background='rgba(255,255,255,0.12)'"
-        >✕</button>
 
-        <!-- Icono y título -->
-        <div style="text-align:center; margin-bottom:1.4rem;">
-          <div style="
-            font-size: 2.4rem;
-            margin-bottom: .6rem;
-            filter: drop-shadow(0 2px 8px rgba(255,122,72,.4));
-          ">🔐</div>
-          <h3 id="modal-cursos-title" style="
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 0 0 .4rem;
-            letter-spacing: -.01em;
-          ">Área exclusiva para socios</h3>
-          <p style="
-            color: rgba(255,255,255,0.72);
-            font-size: .88rem;
-            margin: 0;
-            line-height: 1.6;
-          ">El acceso a los <strong style="color:#ff7a48">Cursos SCEIC-USFX</strong> está reservado para socios activos. Ingresa tu código de acceso para continuar.</p>
-        </div>
-
-        <!-- Formulario -->
-        <div style="margin-bottom:.5rem;">
-          <label for="codigoUsuario" style="
-            display:block;
-            color: rgba(255,255,255,0.85);
-            font-size: .82rem;
-            font-weight: 600;
-            margin-bottom: .45rem;
-            letter-spacing: .04em;
-            text-transform: uppercase;
-          ">Código de acceso</label>
-          <div style="position:relative;">
-            <input
-              id="codigoUsuario"
-              type="password"
-              placeholder="Ingresa tu código de socio"
-              autocomplete="off"
-              onkeydown="if(event.key==='Enter') validarAcceso()"
-              style="
-                width: 100%;
-                padding: .72rem 1rem .72rem 2.8rem;
-                border-radius: 10px;
-                border: 1.5px solid rgba(255,255,255,0.22);
-                background: rgba(255,255,255,0.09);
-                color: #fff;
-                font-size: .95rem;
-                outline: none;
-                box-sizing: border-box;
-                transition: border-color .2s, background .2s;
-              "
-              onfocus="this.style.borderColor='rgba(255,122,72,0.75)'; this.style.background='rgba(255,255,255,0.13)'"
-              onblur="this.style.borderColor='rgba(255,255,255,0.22)'; this.style.background='rgba(255,255,255,0.09)'"
-            />
-            <span style="
-              position:absolute; left:.9rem; top:50%; transform:translateY(-50%);
-              font-size:1rem; opacity:.6; pointer-events:none;
-            ">🔑</span>
-          </div>
-        </div>
-
-        <!-- Mensaje de error -->
-        <div id="mensajeError" style="
-          display: none;
-          color: #ff7a48;
-          font-size: .83rem;
-          margin-bottom: .8rem;
-          padding: .5rem .8rem;
-          background: rgba(227,55,30,0.15);
-          border-left: 3px solid #e3371e;
-          border-radius: 6px;
-        ">❌ Código incorrecto. Verifica e intenta nuevamente.</div>
-
-        <!-- Botón verificar -->
-        <button
-          id="btn-validar-acceso"
-          onclick="validarAcceso()"
-          style="
-            width: 100%;
-            padding: .82rem;
-            background: linear-gradient(90deg, #ff7a48, #e3371e);
-            border: none;
-            border-radius: 10px;
-            color: #fff;
-            font-size: .97rem;
-            font-weight: 700;
-            cursor: pointer;
-            letter-spacing: .02em;
-            transition: opacity .2s, transform .15s;
-            margin-top: .3rem;
-          "
-          onmouseover="this.style.opacity='.88'; this.style.transform='translateY(-1px)'"
-          onmouseout="this.style.opacity='1'; this.style.transform=''"
-        >Verificar acceso</button>
-      </div>
-    </div>
 
     <style>
       @keyframes modalIn {
-        from { opacity: 0; transform: scale(.93) translateY(12px); }
-        to   { opacity: 1; transform: scale(1) translateY(0); }
+        from {
+          opacity: 0;
+          transform: scale(0.93) translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
       }
     </style>
 

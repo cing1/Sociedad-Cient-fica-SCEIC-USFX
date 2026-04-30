@@ -294,7 +294,7 @@ section {
 /* ── Grid de tarjetas ─────────────────────────────────────── */
 .cursos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.6rem;
 }
 
@@ -422,6 +422,25 @@ section {
   display: flex;
   align-items: center;
   gap: 0.35rem;
+}
+
+/* ── Etiquetas (tags) ─────────────────────────────────────── */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  /* margin: 0.5rem 0 0; */
+  padding: 0;
+}
+
+.tag-chip {
+  display: inline-block;
+  font-size: 0.6rem;
+  color: rgb(124, 255, 84);
+  border: 1px solid rgba(0, 217, 255, 0.62);
+  padding: 0px 5px;
+  cursor: default;
+  border-radius: 4px;
 }
 
 /* Empuja el link al fondo */

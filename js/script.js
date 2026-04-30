@@ -210,6 +210,14 @@ function cerrarModalCursos() {
   const modal = document.getElementById("modal-cursos");
   if (modal) modal.style.display = "none";
   document.body.style.overflow = "";
+
+  // Si estamos en cursos.html y NO hay acceso, regresamos al index
+  if (
+    window.location.pathname.includes("cursos.html") &&
+    sessionStorage.getItem("sceic_access") !== "granted"
+  ) {
+    window.location.href = "index.html";
+  }
 }
 
 // Cerrar modal al pulsar fuera del panel
@@ -231,14 +239,10 @@ async function validarAcceso() {
   const input = document.getElementById("codigoUsuario").value;
   const mensajeError = document.getElementById("mensajeError");
 
-  // Limpiar error anterior
   mensajeError.style.display = "none";
 
-  // Convertimos el texto a un formato que el navegador entienda
   const msgUint8 = new TextEncoder().encode(input);
-  // Generamos el hash usando la capacidad nativa del navegador
   const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
-  // Convertimos el resultado a texto hexadecimal
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashGenerado = hashArray
     .map((b) => b.toString(16).padStart(2, "0"))
@@ -248,8 +252,18 @@ async function validarAcceso() {
     "8133923ab9d1c930460860bb237ceb07998e03cee11601849169fe16bc0ef0d0";
 
   if (hashGenerado === hashCorrecto) {
-    cerrarModalCursos();
-    window.location.href = "cursos.html";
+    sessionStorage.setItem("sceic_access", "granted");
+    
+    const modal = document.getElementById("modal-cursos");
+    if (modal) modal.style.display = "none";
+    document.body.style.overflow = "";
+
+    // Si hay una función para revelar la página de cursos, la llamamos
+    if (typeof mostrarPaginaCursos === "function") {
+      mostrarPaginaCursos();
+    } else if (!window.location.pathname.includes("cursos.html")) {
+      window.location.href = "cursos.html";
+    }
   } else {
     mensajeError.style.display = "block";
   }
