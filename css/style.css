@@ -632,7 +632,7 @@ nav.scrolled {
 
 /* SECTIONS */
 section {
-  padding: 6rem 4rem;
+  padding: 4rem 4rem;
   position: relative;
 }
 
@@ -660,6 +660,10 @@ section {
 }
 
 .section-title {
+  background: linear-gradient(135deg, var(--red), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-family: "Syne", sans-serif;
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 700;
@@ -904,7 +908,7 @@ section {
   display: flex;
   align-items: flex-start;
   gap: 1.8rem;
-  padding: 1.6rem 2rem;
+  padding: 0.5rem 2rem;
   background: rgba(21, 31, 48, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 14px;
@@ -980,7 +984,7 @@ section {
   background: rgba(26, 86, 219, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
-  padding: 2rem 1.5rem;
+  padding: 1rem 1rem;
   text-align: center;
   transition:
     border-color 0.4s,
@@ -1275,7 +1279,7 @@ section {
   display: flex;
   align-items: center;
   gap: 2rem;
-  padding: 1.6rem 2rem;
+  padding: 1.3rem 2rem;
   background: rgba(21, 31, 48, 0.5);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   transition: all 0.3s ease;
@@ -1364,7 +1368,7 @@ section {
 .rec-card {
   padding: 2rem;
   border-radius: 16px;
-  background: rgba(21, 31, 48, 0.7);
+  background: rgba(12, 17, 30, 0.78);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
@@ -1387,9 +1391,9 @@ section {
 }
 
 .rec-card:hover {
-  border-color: var(--orange);
+  border-color: var(--cobalt);
   transform: translateY(-7px);
-  box-shadow: 0 18px 45px rgba(255, 122, 72, 0.14);
+  box-shadow: 0 18px 45px rgba(72, 206, 255, 0.14);
 }
 
 .rec-card:hover::after {
@@ -1944,6 +1948,29 @@ footer .accent {
   section {
     padding: 4rem 1.5rem;
   }
+  .section-title {
+    font-size: 1.3rem;
+  }
+  #quienes-somos p{
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .qs-card{
+    padding: 0.5rem;
+  }
+
+    /* MISION Y VISION */
+  .mv-card {
+    padding: 1.5rem;
+  }
+  .mv-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
 
   .members-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1951,7 +1978,7 @@ footer .accent {
   }
 
   .member-card {
-    padding: 1.2rem 0.8rem;
+    padding: 0.5rem 0.8rem;
   }
 
   .member-avatar {
@@ -1962,7 +1989,7 @@ footer .accent {
   }
 
   .member-card h4 {
-    font-size: 0.82rem;
+    font-size: 0.6rem;
   }
 
   .member-role {
