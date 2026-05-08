@@ -249,7 +249,7 @@ async function validarAcceso() {
     .join("");
 
   const hashCorrecto =
-    "8133923ab9d1c930460860bb237ceb07998e03cee11601849169fe16bc0ef0d0";
+    "b887ee31462415b7d2d75cf61112d8cfe2da296dc2ee42ff0980d460a66f527b";
 
   if (hashGenerado === hashCorrecto) {
     sessionStorage.setItem("sceic_access", "granted");

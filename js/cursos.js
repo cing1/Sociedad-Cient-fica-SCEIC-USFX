@@ -1,6 +1,6 @@
 const CURSOS = [
   {
-    id: 324,
+    id: 326,
     nombre:
       "Diseño, elaboración de planos y cómputos métricos de polideportivos",
     organizador: "TARIFA",
@@ -11,6 +11,16 @@ const CURSOS = [
   },
   {
     id: 325,
+    nombre:
+      "Diseño sismoresistente de edificios con cimentaciones profundas",
+    organizador: "TARIFA",
+    categoria: "Estructuras",
+    portada: "./img/portada-cursos/tarifa-polideportivos.jpg",
+    link: "https://drive.google.com/drive/u/1/folders/1UKWdQH_uH2xYDT_x0TIb5wyk2Viwadul",
+    etiquetas: ["Sismorresistente", "Etabs", "Revit", "Tecla Structures"],
+  },
+  {
+    id: 324,
     nombre: "Cálculo y diseño de instalaciones hidrosanitarias",
     organizador: "TARIFA",
     categoria: "Hidrosanitarias",
