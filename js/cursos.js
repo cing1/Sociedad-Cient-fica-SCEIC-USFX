@@ -15,7 +15,7 @@ const CURSOS = [
       "Diseño sismoresistente de edificios con cimentaciones profundas",
     organizador: "TARIFA",
     categoria: "Estructuras",
-    portada: "./img/portada-cursos/tarifa-polideportivos.jpg",
+    portada: "./img/portada-cursos/tarifa-diseno-sismoresistente-edicios-altos-con-cimentaciones.jpg",
     link: "https://drive.google.com/drive/u/1/folders/1UKWdQH_uH2xYDT_x0TIb5wyk2Viwadul",
     etiquetas: ["Sismorresistente", "Etabs", "Revit", "Tecla Structures"],
   },
