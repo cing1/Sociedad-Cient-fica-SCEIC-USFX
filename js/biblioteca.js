@@ -39,27 +39,11 @@ function rowToBook(row) {
   const tipo = getField(row, "tipo de archivo") || "pdf";
 
   // Construir URLs de Drive a partir del ID si no vienen completas
-  const driveView =
-    viewUrl ||
-    (fileId
-      ? `https://drive.google.com/file/d/${fileId}/view?usp=drivesdk`
-      : "#");
-  const driveDl =
-    dlUrl ||
-    (fileId ? `https://drive.google.com/uc?export=download&id=${fileId}` : "#");
-  const img =
-    imgUrl ||
-    (fileId ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w400` : "");
+  const driveView = viewUrl || (fileId ? `https://drive.google.com/file/d/${fileId}/view?usp=drivesdk` : "#");
+  const driveDl = dlUrl || (fileId ? `https://drive.google.com/uc?export=download&id=${fileId}` : "#");
+  const img = imgUrl || (fileId ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w400` : "");
 
-  return {
-    title,
-    cat,
-    size: size ? `${size}` : "",
-    type: tipo.toLowerCase().includes("zip") ? "zip" : "pdf",
-    view: driveView,
-    dl: driveDl,
-    img,
-  };
+  return { title, cat, size: size ? `${size}` : "", type: tipo.toLowerCase().includes("zip") ? "zip" : "pdf", view: driveView, dl: driveDl, img };
 }
 
 /* ════════════════════════════════════════════════════════
@@ -106,19 +90,13 @@ const CATEGORIES = [
   { id: "hidrologia", label: "Hidrología" },
   { id: "hormigon-armado1", label: "Hormigón Armado I" },
   { id: "arquitectura-urbana", label: "Arquitectura y Planificación Urbana" },
-  {
-    id: "preparacion-proyectos",
-    label: "Preparación y Evaluación de Proyectos",
-  },
+  { id: "preparacion-proyectos", label: "Preparación y Evaluación de Proyectos" },
   { id: "fundaciones", label: "Fundaciones" },
   { id: "hormigon-armado2", label: "Hormigón Armado II" },
   { id: "estructuras-metalicas", label: "Estructuras Metálicas" },
   { id: "estructuras-madera", label: "Estructuras de Madera" },
   { id: "sanitaria2", label: "Sanitaria II" },
-  {
-    id: "maquinaria-construccion",
-    label: "Maquinaria y Equipo de Construcción",
-  },
+  { id: "maquinaria-construccion", label: "Maquinaria y Equipo de Construcción" },
   { id: "ingenieria-trafico", label: "Ingeniería de Tráfico" },
   { id: "carreteras2", label: "Carreteras II" },
   { id: "sistemas-ingenieria-civil", label: "Sistemas de Ingeniería Civil" },
@@ -196,8 +174,7 @@ async function fetchBooks() {
     render();
 
     // Actualizar badge de última carga
-    document.getElementById("refresh-badge").textContent =
-      `Actualizado: ${lastUpdate.toLocaleString("es-ES")}`;
+    document.getElementById("refresh-badge").textContent = `Actualizado: ${lastUpdate.toLocaleString("es-ES")}`;
   } catch (error) {
     console.error("Error fetching Google Sheets:", error);
     showError(error.message);
@@ -211,9 +188,7 @@ function buildSidebar() {
   const sidebarList = document.getElementById("sidebar-list");
 
   // Limpiar ítems dinámicos previos (conservar el "Todo")
-  sidebarList
-    .querySelectorAll('.sidebar-item:not([data-cat="all"])')
-    .forEach((el) => el.remove());
+  sidebarList.querySelectorAll('.sidebar-item:not([data-cat="all"])').forEach((el) => el.remove());
 
   CATEGORIES.forEach((cat) => {
     const count = BOOKS.filter((bk) => bk.cat === cat.id).length;
@@ -243,10 +218,8 @@ function render() {
   });
 
   // Ordenar
-  if (state.sort === "title")
-    filtered.sort((a, b) => a.title.localeCompare(b.title, "es"));
-  if (state.sort === "size")
-    filtered.sort((a, b) => parseFloat(a.size) - parseFloat(b.size));
+  if (state.sort === "title") filtered.sort((a, b) => a.title.localeCompare(b.title, "es"));
+  if (state.sort === "size") filtered.sort((a, b) => parseFloat(a.size) - parseFloat(b.size));
 
   // Meta
   document.getElementById("results-meta").textContent =
@@ -272,10 +245,7 @@ function render() {
     return;
   }
 
-  const activeCats =
-    state.cat === "all"
-      ? CATEGORIES.filter((c) => groups[c.id])
-      : CATEGORIES.filter((c) => c.id === state.cat && groups[c.id]);
+  const activeCats = state.cat === "all" ? CATEGORIES.filter((c) => groups[c.id]) : CATEGORIES.filter((c) => c.id === state.cat && groups[c.id]);
 
   let html = "";
   activeCats.forEach((cat) => {
@@ -298,24 +268,30 @@ function cardGrid(bk) {
   const icon = bk.type === "zip" ? "bxs-file-archive" : "bxs-file-pdf";
   return `
     <article class="book-card">
-      <a href="${escapeHtml(bk.view)}" target="_blank" rel="noopener" title="${escapeHtml(bk.title)}">
+      <div class="book-viewer" title="${escapeHtml(bk.title)}">
+        <div class="book-spine">${escapeHtml(bk.title)}</div>
         <div class="book-cover">
           <img loading="lazy" src="${escapeHtml(bk.img)}" alt="${escapeHtml(bk.title)}"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
           <span class="no-cover" style="display:none"><i class="bx ${icon}"></i></span>
+          <div class="edge-reflection"></div> 
         </div>
+        <div class="book-shadow"></div>
+      </div>
+
+      <div class="book-footer">
         <div class="book-info">
-          <p class="book-title">${escapeHtml(bk.title)}</p>
+          <a class="book-title" href="${escapeHtml(bk.view)}" target="_blank" rel="noopener" title="${escapeHtml(bk.title)}">${escapeHtml(bk.title)}</a>
         </div>
-      </a>
-      <div class="book-actions">
-        <a class="btn-view" href="${escapeHtml(bk.view)}" target="_blank" rel="noopener" title="Ver libro">
-          <i class="bx bx-expand-alt"></i> Ver
-        </a>
-        <a class="btn-download" href="${escapeHtml(bk.dl)}" download title="Descargar libro">
-          <i class="bx bx-cloud-download"></i>
-          ${bk.size ? `<span class="size">${escapeHtml(bk.size)} Mb</span>` : ""}
-        </a>
+        <div class="book-actions">
+          <a class="btn-view" href="${escapeHtml(bk.view)}" target="_blank" rel="noopener" title="Ver libro">
+            <i class="bx bx-expand-alt"></i> Ver
+          </a>
+          <a class="btn-download" href="${escapeHtml(bk.dl)}" download title="Descargar libro">
+            <i class="bx bx-cloud-download"></i>
+            ${bk.size ? `<span class="size">${escapeHtml(bk.size)} Mb</span>` : ""}
+          </a>
+        </div>
       </div>
     </article>`;
 }
@@ -366,9 +342,7 @@ function init() {
   sidebarList.addEventListener("click", (e) => {
     const item = e.target.closest(".sidebar-item");
     if (!item) return;
-    sidebarList
-      .querySelectorAll(".sidebar-item")
-      .forEach((i) => i.classList.remove("active"));
+    sidebarList.querySelectorAll(".sidebar-item").forEach((i) => i.classList.remove("active"));
     item.classList.add("active");
     state.cat = item.dataset.cat;
     render();
@@ -384,12 +358,8 @@ function init() {
     const activeItem = sidebarList.querySelector(".sidebar-item.active");
     if (activeItem && activeItem.style.display === "none") {
       state.cat = "all";
-      sidebarList
-        .querySelectorAll(".sidebar-item")
-        .forEach((i) => i.classList.remove("active"));
-      const allItem = sidebarList.querySelector(
-        '.sidebar-item[data-cat="all"]',
-      );
+      sidebarList.querySelectorAll(".sidebar-item").forEach((i) => i.classList.remove("active"));
+      const allItem = sidebarList.querySelector('.sidebar-item[data-cat="all"]');
       if (allItem) allItem.classList.add("active");
       render();
     }
