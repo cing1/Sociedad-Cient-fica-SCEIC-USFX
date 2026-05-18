@@ -127,6 +127,8 @@ let state = {
   cat: "all",
   view: "grid", // 'grid' | 'list'
   sort: "default",
+  page: 1,
+  pageSize: 40,
 };
 
 /* ════════════════════════════════════════════════════════
@@ -225,9 +227,41 @@ function render() {
   document.getElementById("results-meta").textContent =
     `${filtered.length} archivo${filtered.length !== 1 ? "s" : ""} encontrado${filtered.length !== 1 ? "s" : ""}`;
 
+  if (filtered.length === 0) {
+    root.innerHTML = `<div class="empty-state">
+      <i class="bx bx-book-open"></i>
+      <p>No se encontraron archivos${q ? ` para "<strong>${escapeHtml(q)}</strong>"` : "."}</p>
+    </div>`;
+    return;
+  }
+
+  // ── Paginación solo para "Todos" ──────────────────
+  const usePagination = state.cat === "all" && !q;
+
+  // Ordenar por orden de CATEGORIES (y alfabéticamente dentro de cada una) antes de paginar
+  if (usePagination) {
+    const catOrder = Object.fromEntries(CATEGORIES.map((c, i) => [c.id, i]));
+    filtered.sort((a, b) => {
+      const orderDiff = (catOrder[a.cat] ?? 999) - (catOrder[b.cat] ?? 999);
+      if (orderDiff !== 0) return orderDiff;
+      return a.title.localeCompare(b.title, "es");
+    });
+  }
+
+  const totalPages = usePagination ? Math.ceil(filtered.length / state.pageSize) : 1;
+
+  // Clamp page
+  if (state.page < 1) state.page = 1;
+  if (state.page > totalPages) state.page = totalPages;
+
+  // Items to render on this page (flat slice when paginating)
+  const pageItems = usePagination
+    ? filtered.slice((state.page - 1) * state.pageSize, state.page * state.pageSize)
+    : filtered;
+
   // Agrupar por categoría
   const groups = {};
-  filtered.forEach((bk) => {
+  pageItems.forEach((bk) => {
     if (!groups[bk.cat]) groups[bk.cat] = [];
     groups[bk.cat].push(bk);
   });
@@ -236,14 +270,6 @@ function render() {
   Object.keys(groups).forEach((cat) => {
     groups[cat].sort((a, b) => a.title.localeCompare(b.title, "es"));
   });
-
-  if (filtered.length === 0) {
-    root.innerHTML = `<div class="empty-state">
-      <i class="bx bx-book-open"></i>
-      <p>No se encontraron archivos${q ? ` para "<strong>${escapeHtml(q)}</strong>"` : "."}</p>
-    </div>`;
-    return;
-  }
 
   const activeCats = state.cat === "all" ? CATEGORIES.filter((c) => groups[c.id]) : CATEGORIES.filter((c) => c.id === state.cat && groups[c.id]);
 
@@ -261,7 +287,81 @@ function render() {
       </div>`;
   });
 
+  // ── Pagination controls ───────────────────────────
+  if (usePagination && totalPages > 1) {
+    html += buildPaginationHtml(totalPages);
+  }
+
   root.innerHTML = html;
+
+  // Wire up pagination buttons
+  if (usePagination && totalPages > 1) {
+    bindPaginationEvents();
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   PAGINATION HELPERS
+   ════════════════════════════════════════════════════════ */
+function buildPaginationHtml(totalPages) {
+  const page = state.page;
+  const start = (page - 1) * state.pageSize + 1;
+  const end = Math.min(page * state.pageSize, BOOKS.length);
+
+  // Generate page numbers with ellipsis
+  const pageNumbers = generatePageNumbers(page, totalPages);
+
+  return `
+    <div class="pagination" role="navigation" aria-label="Paginación de biblioteca">
+      <button class="page-btn page-prev" data-page="prev" ${page <= 1 ? 'disabled' : ''}>
+        <i class="bx bx-chevron-left"></i> Anterior
+      </button>
+      <div class="page-numbers">
+        ${pageNumbers.map(p =>
+          p === '...'
+            ? `<span class="page-ellipsis">…</span>`
+            : `<button class="page-num ${p === page ? 'active' : ''}" data-page="${p}">${p}</button>`
+        ).join('')}
+      </div>
+      <button class="page-btn page-next" data-page="next" ${page >= totalPages ? 'disabled' : ''}>
+        Siguiente <i class="bx bx-chevron-right"></i>
+      </button>
+    </div>
+    <div class="page-info">
+      Mostrando ${start}–${end} de ${BOOKS.length} archivos · Página ${page} de ${totalPages}
+    </div>`;
+}
+
+function generatePageNumbers(current, total) {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+
+  const pages = [];
+  pages.push(1);
+
+  if (current > 3) pages.push('...');
+
+  const rangeStart = Math.max(2, current - 1);
+  const rangeEnd = Math.min(total - 1, current + 1);
+  for (let i = rangeStart; i <= rangeEnd; i++) pages.push(i);
+
+  if (current < total - 2) pages.push('...');
+
+  pages.push(total);
+  return pages;
+}
+
+function bindPaginationEvents() {
+  document.querySelectorAll('.pagination [data-page]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const val = btn.dataset.page;
+      if (val === 'prev') state.page--;
+      else if (val === 'next') state.page++;
+      else state.page = parseInt(val, 10);
+      render();
+      // Scroll to top of content
+      document.getElementById('library-root').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 }
 
 function cardGrid(bk) {
@@ -345,6 +445,7 @@ function init() {
     sidebarList.querySelectorAll(".sidebar-item").forEach((i) => i.classList.remove("active"));
     item.classList.add("active");
     state.cat = item.dataset.cat;
+    state.page = 1;
     render();
   });
 
@@ -371,6 +472,7 @@ function init() {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => {
       state.query = e.target.value;
+      state.page = 1;
       render();
     }, 180);
   });
