@@ -232,11 +232,7 @@ async function driveListChildren(folderId) {
   return data.files || [];
 }
 
-/**
- * Recorre recursivamente las subcarpetas de ROOT_FOLDER_ID.
- * Archivos en la raíz → categoría "raiz".
- * Archivos en subcarpetas → categoría = slug del nombre de carpeta.
- */
+
 async function loadDriveFiles() {
   const children = await driveListChildren(ROOT_FOLDER_ID);
 
@@ -387,6 +383,7 @@ function render() {
 
 /* ── Tarjeta cuadrícula ── */
 function cardGrid(n) {
+  const isSoftwareCategory = n.cat === "software";
   const isWeb = n.type === "web";
   const isApp =
     n.mimeType &&
@@ -395,23 +392,57 @@ function cardGrid(n) {
       n.mimeType.includes("exe") ||
       n.mimeType.includes("octet-stream"));
 
-  const iconClass = isWeb ? "bx-world" : isApp ? "bxs-archive" : "bxs-file";
-
-  const coverHtml = n.thumbnail
-    ? `<img src="${n.thumbnail}" alt="${escapeHtml(n.title)}" class="cover-thumb" onerror="this.style.display='none'">`
-    : `<i class="bx ${iconClass} no-cover"></i>`;
-
+  const iconClass = isWeb ? "bx-world" : isApp ? "bxs-file-archive" : "bxs-file-pdf";
   const viewUrl = isWeb ? n.url : driveViewUrl(n.driveId);
   const dlUrl = isWeb ? n.url : driveDownloadUrl(n.driveId);
-
   const licClass =
     n.license && n.license.toLowerCase().includes("open")
       ? "sw-lic-open"
       : "sw-lic-free";
 
+  if (!isSoftwareCategory) {
+    return `
+    <article class="book-card">
+      <div class="book-viewer" title="${escapeHtml(n.title)}">
+        <div class="book-spine">${escapeHtml(n.title)}</div>
+        <div class="book-cover">
+          ${n.thumbnail ? `
+            <img loading="lazy" src="${escapeHtml(n.thumbnail)}" alt="${escapeHtml(n.title)}"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          ` : `
+            <span class="no-cover"><i class="bx ${iconClass}"></i></span>
+          `}
+          <span class="no-cover" style="display:${n.thumbnail ? 'none' : 'flex'}">
+            <i class="bx ${iconClass}"></i>
+          </span>
+          <div class="edge-reflection"></div>
+        </div>
+        <div class="book-shadow"></div>
+      </div>
+      <div class="book-footer">
+        <div class="book-info">
+          <a class="book-title" href="${viewUrl}" target="_blank" rel="noopener" title="${escapeHtml(n.title)}">${escapeHtml(n.title)}</a>
+        </div>
+        <div class="book-actions">
+          <a class="btn-view" href="${viewUrl}" target="_blank" rel="noopener" title="Ver documento">
+            <i class="bx bx-expand-alt"></i> Ver
+          </a>
+          <a class="btn-download" href="${dlUrl}" target="_blank" rel="noopener" title="Descargar documento">
+            <i class="bx bx-cloud-download"></i>
+            ${n.size ? `<span class="size">${escapeHtml(n.size)}</span>` : ""}
+          </a>
+        </div>
+      </div>
+    </article>`;
+  }
+
   return `
-    <article class="book-card ${isWeb ? "software-card" : ""}">
-      <div class="book-cover">${coverHtml}</div>
+    <article class="book-card software-card">
+      <div class="book-cover">${
+        n.thumbnail
+          ? `<img src="${escapeHtml(n.thumbnail)}" alt="${escapeHtml(n.title)}" class="cover-thumb" onerror="this.style.display='none'">`
+          : `<i class="bx ${iconClass} no-cover"></i>`
+      }</div>
       <div class="book-info">
         <p class="book-title">${escapeHtml(n.title)}</p>
         ${n.usage ? `<p class="sw-usage">${escapeHtml(n.usage)}</p>` : ""}
@@ -419,17 +450,12 @@ function cardGrid(n) {
         ${n.description ? `<p class="sw-desc">${escapeHtml(n.description)}</p>` : ""}
       </div>
       <div class="book-actions">
-        <a class="btn-view" href="${viewUrl}" target="_blank" rel="noopener" title="${isWeb ? "Página oficial" : "Ver en Google Drive"}">
-          <i class="bx ${isWeb ? "bx-link-external" : "bx-show"}"></i> ${isWeb ? "Sitio Oficial" : "Ver"}
+        <a class="btn-view" href="${viewUrl}" target="_blank" rel="noopener" title="Página oficial">
+          <i class="bx bx-link-external"></i> Sitio Oficial
         </a>
-        ${
-          !isWeb
-            ? `
         <a class="btn-download" href="${dlUrl}" target="_blank" rel="noopener" title="Descargar archivo">
-          <i class="bx bx-cloud-download"></i>${n.size ? `<span class="file-size">${n.size}</span>` : ""}
-        </a>`
-            : ""
-        }
+          <i class="bx bx-cloud-download"></i>${n.size ? `<span class="file-size">${escapeHtml(n.size)}</span>` : ""}
+        </a>
       </div>
     </article>`;
 }

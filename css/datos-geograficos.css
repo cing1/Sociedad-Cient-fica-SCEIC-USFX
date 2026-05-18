@@ -1,5 +1,4 @@
-/* ── Datos Geográficos – estilos específicos ───── */
-@import url('biblioteca.css');
+/* ── Datos Geográficos – estilo simple y minimalista ───────────────── */
 
 #normas-root {
   min-height: 400px;
@@ -12,7 +11,233 @@
   -webkit-text-fill-color: transparent;
 }
 
-.data-card .book-cover {
-  height: 120px; /* Reducir altura del cover para iconos simples */
-  background-color: rgba(217, 119, 6, 0.05); /* fondo con tinte naranja */
+/* Layout de tarjetas */
+.books-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* Tarjeta minimalista para datos geográficos */
+.data-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(16, 55, 120, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.data-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(4, 12, 28, 0.45);
+  background: rgba(4, 12, 28, 0.45);
+}
+
+.data-card-cover {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.data-card-cover .data-card-no-cover {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 2.6rem;
+}
+
+.data-card-info {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.data-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f8fafc;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.data-card-info p {
+  color: rgba(248, 250, 252, 0.72);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.data-card-actions {
+  padding: 0 1.25rem 1rem;
+}
+
+.data-card-btn {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.data-card-btn:hover {
+  background: rgba(4, 12, 28, 0.45);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Vista de lista minimalista */
+.books-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.list-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.list-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.list-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: #f8fafc;
+  font-size: 0.95rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.list-title span {
+  color: rgba(248, 250, 252, 0.68);
+  font-size: 0.84rem;
+  font-weight: 400;
+}
+
+.list-actions {
+  display: flex;
+  align-items: center;
+}
+
+.data-list-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.72rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.07);
+  color: #f8fafc;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.data-list-view-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+}
+
+.section-title h2 {
+  font-size: 1.15rem;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.section-title .count {
+  font-size: 0.75rem;
+  font-family: 'DM Mono', monospace;
+  color: rgba(248, 250, 252, 0.82);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.empty-state,
+.loading-state,
+.error-state {
+  text-align: center;
+  padding: 56px 24px;
+  color: rgba(248, 250, 252, 0.78);
+}
+
+.empty-state i,
+.loading-state i,
+.error-state i {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  display: block;
+  color: rgba(255, 255, 255, 0.75);
+  opacity: 0.75;
+}
+
+.empty-state p,
+.loading-state p,
+.error-state p {
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.loading-state i {
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

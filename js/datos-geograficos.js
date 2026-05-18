@@ -166,14 +166,14 @@ function render() {
 /* ── Tarjeta cuadrícula ── */
 function cardGrid(n) {
   return `
-    <article class="book-card data-card" onclick="window.open('${n.link}', '_blank')" style="cursor: pointer;">
-      <div class="book-cover"><i class="bx ${n.icon} no-cover" style="color:var(--cobalt); font-size:3rem;"></i></div>
-      <div class="book-info">
-        <p class="book-title">${escapeHtml(n.title)}</p>
+    <article class="data-card" onclick="window.open('${n.link}', '_blank')" style="cursor: pointer;">
+      <div class="data-card-cover"><i class="bx ${n.icon} data-card-no-cover" style="color:var(--cobalt); font-size:3rem;"></i></div>
+      <div class="data-card-info">
+        <p class="data-card-title">${escapeHtml(n.title)}</p>
         <p style="font-size: 0.85rem; color: var(--gray); margin-top: 0.5rem; line-height: 1.4;">${escapeHtml(n.description)}</p>
       </div>
-      <div class="book-actions">
-        <a class="btn-view" href="${n.link}" target="_blank" rel="noopener" style="width: 100%; text-align:center;">
+      <div class="data-card-actions">
+        <a class="data-card-btn" href="${n.link}" target="_blank" rel="noopener" style="width: 100%; text-align:center;">
           <i class="bx bx-link-external"></i> Visitar Portal
         </a>
       </div>
@@ -192,7 +192,7 @@ function cardList(n) {
         </span>
       </span>
       <div class="list-actions">
-        <a class="btn-view list-view-btn" href="${n.link}" target="_blank" rel="noopener">
+        <a class="data-list-view-btn" href="${n.link}" target="_blank" rel="noopener">
           <i class="bx bx-link-external"></i> Visitar
         </a>
       </div>

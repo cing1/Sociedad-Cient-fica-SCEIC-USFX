@@ -2,10 +2,7 @@
 <html lang="es">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-182NL3DZ5M"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-182NL3DZ5M"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -18,71 +15,45 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Normas y Reglamentos de Ingeniería Civil – SCEIC USFX"
-    />
+    <meta name="description" content="Normas y Reglamentos de Ingeniería Civil – SCEIC USFX" />
     <title>SCEIC-USFX – Normas y Reglamentos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/png" href="img/logo-sceic.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="icon" type="image/png" href="img/logo-sceic.png" />
+    <link rel="stylesheet" href="./css/biblioteca.css" />
     <script src="./js/script.js" defer></script>
     <script src="./js/components.js" defer></script>
-
-    <link rel="stylesheet" href="./css/biblioteca.css" />
     <link rel="stylesheet" href="./css/normas.css" />
   </head>
 
   <body>
-
     <div class="page-wrap">
       <!-- Normas Page Header -->
       <header class="lib-page-header">
         <a href="index.html#recursos" class="back-link">← Volver a Recursos</a>
         <h1>Normas y Reglamentos</h1>
-        <p>
-          Manuales técnicos de la ABC, AASHTO y reglamentación nacional de libre consulta.
-        </p>
+        <p>Manuales técnicos de la ABC, AASHTO y reglamentación nacional de libre consulta.</p>
       </header>
 
       <!-- Controls -->
       <div class="controls">
         <div class="search-wrap">
           <i class="bx bx-search"></i>
-          <input
-            type="text"
-            id="search"
-            placeholder="Buscar norma o manual…"
-            autocomplete="off"
-          />
+          <input type="text" id="search" placeholder="Buscar norma o manual…" autocomplete="off" />
         </div>
         <span class="refresh-badge" id="refresh-badge"></span>
         <div class="view-toggle">
           <button class="view-btn" id="btn-sidebar" title="Filtrar categorías">
             <i class="bx bx-filter-alt"></i>
           </button>
-          <button
-            class="view-btn active"
-            id="btn-grid"
-            title="Vista cuadrícula"
-          >
+          <button class="view-btn active" id="btn-grid" title="Vista cuadrícula">
             <i class="bx bxs-grid"></i>
           </button>
           <button class="view-btn" id="btn-list" title="Vista lista">
@@ -103,12 +74,7 @@
           </div>
           <div class="cat-search-wrap">
             <i class="bx bx-search"></i>
-            <input
-              id="cat-search"
-              type="text"
-              placeholder="Buscar..."
-              autocomplete="off"
-            />
+            <input id="cat-search" type="text" placeholder="Buscar..." autocomplete="off" />
           </div>
           <ul class="sidebar-list" id="sidebar-list">
             <li class="sidebar-item active" data-cat="all">
@@ -124,7 +90,7 @@
           <div id="normas-root">
             <div class="loading-state">
               <i class="bx bx-loader-alt"></i>
-              Cargando normas desde Google Drive…
+              Cargando normas y reglamentos…
             </div>
           </div>
         </main>

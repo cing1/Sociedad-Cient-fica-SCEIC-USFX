@@ -179,27 +179,34 @@ function render() {
 
 /* ── Tarjeta cuadrícula ── */
 function cardGrid(n) {
-  const isPdf = n.mimeType === "application/pdf" ||
-                n.mimeType.startsWith("application/vnd.google-apps");
-  const iconClass = isPdf ? "bxs-file-pdf" : "bxs-file";
-
-  const coverHtml = n.thumbnail
-    ? `<img src="${n.thumbnail}" alt="${escapeHtml(n.title)}" class="cover-thumb" onerror="this.style.display='none'">`
-    : `<i class="bx ${iconClass} no-cover"></i>`;
+  const icon = n.type === "zip" ? "bxs-file-archive" : "bxs-file-pdf";
 
   return `
     <article class="book-card">
-      <div class="book-cover">${coverHtml}</div>
-      <div class="book-info">
-        <p class="book-title">${escapeHtml(n.title)}</p>
+      <div class="book-viewer" title="${escapeHtml(n.title)}">
+        <div class="book-spine">${escapeHtml(n.title)}</div>
+        <div class="book-cover">
+          <img loading="lazy" src="${escapeHtml(n.thumbnail || '')}" alt="${escapeHtml(n.title)}"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="no-cover" style="display:none"><i class="bx ${icon}"></i></span>
+          <div class="edge-reflection"></div>
+        </div>
+        <div class="book-shadow"></div>
       </div>
-      <div class="book-actions">
-        <a class="btn-view" href="${driveViewUrl(n.driveId)}" target="_blank" rel="noopener" title="Ver en Google Drive">
-          <i class="bx bx-show"></i> Ver
-        </a>
-        <a class="btn-download" href="${driveDownloadUrl(n.driveId)}" target="_blank" rel="noopener" title="Descargar archivo">
-          <i class="bx bx-cloud-download"></i>${n.size ? `<span class="file-size">${n.size}</span>` : ""}
-        </a>
+
+      <div class="book-footer">
+        <div class="book-info">
+          <a class="book-title" href="${driveViewUrl(n.driveId)}" target="_blank" rel="noopener" title="${escapeHtml(n.title)}">${escapeHtml(n.title)}</a>
+        </div>
+        <div class="book-actions">
+          <a class="btn-view" href="${driveViewUrl(n.driveId)}" target="_blank" rel="noopener" title="Ver documento">
+            <i class="bx bx-expand-alt"></i> Ver
+          </a>
+          <a class="btn-download" href="${driveDownloadUrl(n.driveId)}" target="_blank" rel="noopener" title="Descargar documento">
+            <i class="bx bx-cloud-download"></i>
+            ${n.size ? `<span class="size">${escapeHtml(n.size)}</span>` : ""}
+          </a>
+        </div>
       </div>
     </article>`;
 }

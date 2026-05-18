@@ -2,10 +2,7 @@
 <html lang="es">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-182NL3DZ5M"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-182NL3DZ5M"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -19,8 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Cursos especializados en Ingeniería Civil exclusivos para socios SCEIC-USFX: Estructuras, Carreteras, Hidrosanitaria, Gerencia y Geodesia."
-    />
+      content="Cursos especializados en Ingeniería Civil exclusivos para socios SCEIC-USFX: Estructuras, Carreteras, Hidrosanitaria, Gerencia y Geodesia." />
     <title>Cursos — SCEIC-USFX</title>
 
     <!-- Fuentes -->
@@ -28,8 +24,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Saira:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
 
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/cursos.css" />
@@ -51,7 +46,6 @@
   </head>
 
   <body>
-
     <!-- NAV inyectado por components.js -->
 
     <div class="cursos-page">
@@ -59,29 +53,14 @@
       <div class="cursos-hero">
         <div class="cursos-hero-inner">
           <a href="index.html#recursos" class="cursos-back">
-            <svg
-              width="16"
-              height="16"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 19l-7-7 7-7"
-              />
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
             Volver a Recursos
           </a>
 
           <h1>Cursos <span>SCEIC</span></h1>
-          <p>
-            Formación especializada en las áreas clave de la Ingeniería Civil,
-            exclusiva para socios activos de la SCEIC-USFX.
-          </p>
+          <p>Formación especializada en las áreas clave de la Ingeniería Civil, exclusiva para socios activos de la SCEIC-USFX.</p>
         </div>
       </div>
 
@@ -99,15 +78,7 @@
         <section aria-label="Listado de cursos">
           <!-- Buscador -->
           <div class="cursos-search-wrap">
-            <svg
-              width="18"
-              height="18"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="11" cy="11" r="8" />
               <path stroke-linecap="round" d="M21 21l-4.35-4.35" />
             </svg>
@@ -117,21 +88,12 @@
               placeholder="Buscar curso, palabra clave o categoría…"
               autocomplete="off"
               aria-label="Buscar cursos"
-              oninput="handleSearch(this.value)"
-            />
+              oninput="handleSearch(this.value)" />
           </div>
 
           <div class="cursos-results-info">
-            <p class="results-count">
-              Mostrando <strong id="count-visible">0</strong> cursos
-            </p>
-            <button
-              class="btn-clear-filters"
-              id="btn-clear"
-              onclick="limpiarFiltros()"
-            >
-              ✕ Limpiar filtros
-            </button>
+            <p class="results-count">Mostrando <strong id="count-visible">0</strong> cursos</p>
+            <button class="btn-clear-filters" id="btn-clear" onclick="limpiarFiltros()">✕ Limpiar filtros</button>
           </div>
 
           <div class="cursos-grid" id="cursos-grid">
@@ -160,15 +122,10 @@
         -webkit-backdrop-filter: blur(6px);
         align-items: center;
         justify-content: center;
-      "
-    >
+      ">
       <div
         style="
-          background: linear-gradient(
-            135deg,
-            rgba(16, 55, 120, 0.97) 0%,
-            rgba(26, 86, 219, 0.93) 100%
-          );
+          background: linear-gradient(135deg, rgba(16, 55, 120, 0.97) 0%, rgba(26, 86, 219, 0.93) 100%);
           border: 1px solid rgba(255, 255, 255, 0.18);
           border-radius: 20px;
           box-shadow:
@@ -179,8 +136,7 @@
           width: calc(100% - 2.4rem);
           position: relative;
           animation: modalIn 0.32s cubic-bezier(0.4, 0, 0.2, 1);
-        "
-      >
+        ">
         <!-- Botón cerrar -->
         <button
           id="modal-cursos-close"
@@ -204,46 +160,19 @@
             transition: background 0.2s;
           "
           onmouseover="this.style.background = 'rgba(255,255,255,0.22)'"
-          onmouseout="this.style.background = 'rgba(255,255,255,0.12)'"
-        >
+          onmouseout="this.style.background = 'rgba(255,255,255,0.12)'">
           ✕
         </button>
 
         <!-- Icono y título -->
         <div style="text-align: center; margin-bottom: 1.4rem">
-          <div
-            style="
-              font-size: 2.4rem;
-              margin-bottom: 0.6rem;
-              filter: drop-shadow(0 2px 8px rgba(255, 122, 72, 0.4));
-            "
-          >
-            🔐
-          </div>
-          <h3
-            id="modal-cursos-title"
-            style="
-              color: #fff;
-              font-size: 1.2rem;
-              font-weight: 700;
-              margin: 0 0 0.4rem;
-              letter-spacing: -0.01em;
-            "
-          >
+          <div style="font-size: 2.4rem; margin-bottom: 0.6rem; filter: drop-shadow(0 2px 8px rgba(255, 122, 72, 0.4))">🔐</div>
+          <h3 id="modal-cursos-title" style="color: #fff; font-size: 1.2rem; font-weight: 700; margin: 0 0 0.4rem; letter-spacing: -0.01em">
             Área exclusiva para socios
           </h3>
-          <p
-            style="
-              color: rgba(255, 255, 255, 0.72);
-              font-size: 0.88rem;
-              margin: 0;
-              line-height: 1.6;
-            "
-          >
+          <p style="color: rgba(255, 255, 255, 0.72); font-size: 0.88rem; margin: 0; line-height: 1.6">
             El acceso a los
-            <strong style="color: #ff7a48">Cursos SCEIC-USFX</strong> está
-            reservado para socios activos. Ingresa tu código de acceso para
-            continuar.
+            <strong style="color: #ff7a48">Cursos SCEIC-USFX</strong> está reservado para socios activos. Ingresa tu código de acceso para continuar.
           </p>
         </div>
 
@@ -290,18 +219,8 @@
               onblur="
                 this.style.borderColor = 'rgba(255,255,255,0.22)';
                 this.style.background = 'rgba(255,255,255,0.09)';
-              "
-            />
-            <span
-              style="
-                position: absolute;
-                left: 0.9rem;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 1rem;
-                opacity: 0.6;
-                pointer-events: none;
-              "
+              " />
+            <span style="position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); font-size: 1rem; opacity: 0.6; pointer-events: none"
               >🔑</span
             >
           </div>
@@ -319,8 +238,7 @@
             background: rgba(227, 55, 30, 0.15);
             border-left: 3px solid #e3371e;
             border-radius: 6px;
-          "
-        >
+          ">
           ❌ Código incorrecto. Verifica e intenta nuevamente.
         </div>
 
@@ -351,8 +269,7 @@
           onmouseout="
             this.style.opacity = '1';
             this.style.transform = '';
-          "
-        >
+          ">
           Verificar acceso
         </button>
       </div>
@@ -409,11 +326,9 @@
           .replace(/\s+/g, "-")
           .replace(/[^a-z0-9-]/g, "");
 
-      const colorPorCategoria = (nombre) =>
-        (CATEGORIAS.find((c) => c.nombre === nombre) || {}).color || "#1a56db";
+      const colorPorCategoria = (nombre) => (CATEGORIAS.find((c) => c.nombre === nombre) || {}).color || "#1a56db";
 
-      const emojiPorCategoria = (nombre) =>
-        (CATEGORIAS.find((c) => c.nombre === nombre) || {}).emoji || "📚";
+      const emojiPorCategoria = (nombre) => (CATEGORIAS.find((c) => c.nombre === nombre) || {}).emoji || "📚";
 
       /* Reemplaza imagen rota con fallback emoji — sin comillas anidadas */
       function imgFallback(img, emoji) {
@@ -428,8 +343,7 @@
       }
 
       /* Cuenta cursos por categoría */
-      const conteoPorCategoria = (cat) =>
-        CURSOS.filter((c) => c.categoria === cat).length;
+      const conteoPorCategoria = (cat) => CURSOS.filter((c) => c.categoria === cat).length;
 
       /* ── Renderizar sidebar ──────────────────────────────── */
       function renderSidebar() {
@@ -463,30 +377,30 @@
         const minChars = 2;
 
         const filtrados = CURSOS.filter((curso) => {
-          const catOk =
-            categoriasActivas.size === 0 ||
-            categoriasActivas.has(curso.categoria);
-          
+          const catOk = categoriasActivas.size === 0 || categoriasActivas.has(curso.categoria);
+
           // Normalizar texto para comparación (sin acentos, minúsculas)
-          const normalizar = (txt) => 
-            (txt || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          const normalizar = (txt) =>
+            (txt || "")
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "");
           const termNorm = normalizar(term);
           const orgNorm = normalizar(curso.organizador);
           const catNorm = normalizar(curso.categoria);
           const nombreNorm = normalizar(curso.nombre);
-          
+
           // Buscar en etiquetas (array)
-          const etiquetasNorm = (curso.etiquetas || []).map(e => normalizar(e));
-          const etiquetasMatch = term.length >= minChars && 
-            etiquetasNorm.some(et => et.includes(termNorm));
-          
+          const etiquetasNorm = (curso.etiquetas || []).map((e) => normalizar(e));
+          const etiquetasMatch = term.length >= minChars && etiquetasNorm.some((et) => et.includes(termNorm));
+
           // Verificar si el término está contenido en organizador o categoría
           const orgMatch = orgNorm.includes(termNorm);
           const catMatch = catNorm.includes(termNorm);
-          
+
           // Para nombre, buscar coincidencia parcial
           const nombreMatch = term.length >= minChars && nombreNorm.includes(termNorm);
-          
+
           const busOk = term.length < minChars || orgMatch || catMatch || nombreMatch || etiquetasMatch;
           return catOk && busOk;
         });
@@ -529,13 +443,13 @@
             <article class="curso-card" style="--card-accent: ${color}">
               ${portadaHTML}
               <div class="curso-body">
-                <h3 class="curso-nombre">${toSentenceCase(curso.nombre)}</h3>
+                <h3 class="curso-nombre" style="user-select: none;" title="${toSentenceCase(curso.nombre)}">${toSentenceCase(curso.nombre)}</h3>
                 <span class="curso-categoria">
                   <span class=""></span>
                   ${curso.categoria}
                 </span>
                 <p class="tags">
-                  ${curso.etiquetas.map(etiqueta => `<span class="tag-chip">${etiqueta}</span>`).join('')}
+                  ${curso.etiquetas.map((etiqueta) => `<span class="tag-chip">${etiqueta}</span>`).join("")}
                 </p>
                 <p class="curso-organizador">
                   <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path stroke-linecap="round" d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
