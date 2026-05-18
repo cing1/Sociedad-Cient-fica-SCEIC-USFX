@@ -33,7 +33,7 @@
         <img src="img/logo-sceic.png" alt="SCEIC Logo" id="navImg"
              onerror="this.style.display='none';document.getElementById('navFallback').style.display='flex'" />
         <div class="logo-fallback" id="navFallback" style="display:none"></div>
-        SCEIC · USFX
+        SCEIC
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="${h("quienes-somos")}">Nosotros</a></li>

@@ -345,13 +345,11 @@
 }
 
 .book-card {
-  /* background: linear-gradient(135deg, var(--blue) 0%, rgba(255, 255, 255, .08) 100%); */
   perspective: 1600px;
   perspective-origin: 55% 45%;
   display: flex;
   flex-direction: column;
   position: relative;
-  /* border: 1.5px solid rgba(125, 130, 140, 0.752); */
 }
 
 .book-viewer {
@@ -714,6 +712,16 @@
   margin-left: auto;
 }
 
+@media (max-width: 1024px) {
+
+  .book-viewer {
+    width: 100%;
+    height: 280px;
+  }
+  .book-actions {
+    padding: 1rem 0.5rem;
+  }
+}
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 992px) {
   .controls {
@@ -836,10 +844,13 @@
     gap: 15px;
   }
 
-  .book-info {
-    padding: 10px 12px;
+  .book-viewer {
+    width: 100%;
+    height: 250px;
   }
-
+  .book-footer {
+    padding: 0.5rem 0rem;
+  }
   .book-title {
     font-size: 0.8rem;
     -webkit-line-clamp: 2;
@@ -848,10 +859,12 @@
   }
 
   .book-actions {
-    padding: 10px 12px 12px;
-    flex-direction: column;
+    padding: 0.5rem 1rem;
   }
-
+  .book-shadow {
+    bottom: -5px;
+    height: 15px;
+  }
   .btn-download {
     width: 100%;
   }
